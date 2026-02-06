@@ -11,6 +11,15 @@
       type="image/x-icon"
     />
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/png" />
+    <!-- Font Awesome -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"
+/>
+
 
     <!--====== Material Design Icons CSS ======-->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Oswald:wght@200;300;400&display=swap" rel="stylesheet"> -->
@@ -42,6 +51,10 @@
     <!-- ====== Datatable CSS ====== -->
     <link rel="stylesheet" href="/Aviator/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="/Aviator/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet" href="/Aviator/css/newhome.css" />
+
+
+
 
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -247,7 +260,7 @@
         box-sizing: border-box;
       }
       .popup-content {
-        background-color: #011142;
+        /* background-color: #011142; */
         color: #ffffff;
         padding: 20px 25px;
         border-radius: 10px;
@@ -764,6 +777,12 @@
         /* Keep existing */
       }
     </style>
+
+
+
+
+
+
     <!-- ========== EMBEDDED CSS END ========== -->
   </head>
   <!-- Google tag (gtag.js) -->
@@ -775,6 +794,12 @@
 
   gtag('config', 'G-99RTD5DZML');
 </script>
+
+
+  
+
+
+
   <body>
     <!-- =============================== -->
     <!-- Existing Home Page Content      -->
@@ -785,23 +810,163 @@
       <div class="header">
         <img src="/images/banners/logo.png" alt="Aviator Logo" />
         <div class="header-buttons">
-          <button id="openLoginPopupBtn" class="header-auth-btn" style="background-color: #ea580c; color: white">
+          <!-- <button id="openLoginPopupBtn" class="header-auth-btn" style="background-color: #ea580c; color: white">
             Login
-          </button>
-          <button id="openRegisterPopupBtn" class="header-auth-btn" style="background-color: #ea580c; color: white">
+          </button> -->
+
+          <button id="openRegisterPopupBtn" class="header-btn register-btn">
+            REGISTER
+        </button>
+
+          <button id="openLoginPopupBtn" class="header-btn login-btn">
+            LOGIN
+        </button>
+
+          <!-- <button id="openRegisterPopupBtn" class="header-auth-btn" style="background-color: #ea580c; color: white">
             Register
-          </button>
+          </button> -->
         </div>
       </div>
     <% } %>
     
     
-    <div
+    <!-- <div
       class="support-btn"
       onclick="window.location.href='<%= typeof telegram !== 'undefined' ? telegram : '#' %>'"
     >
       CUSTOMER SUPPORT
-    </div>
+    </div> -->
+
+
+    <div
+  class="slider-container"
+  style="<%= money === false ? 'margin-top:0px;' : 'margin-top:60px;' %>"
+>
+  <div class="slider-track">
+    <img src="/images/banners/ban1.jpeg">
+    <img src="/images/banners/ban2.jpeg">
+    <img src="/images/banners/ban3.jpeg">
+    <img src="/images/banners/ban4.jpeg">
+  </div>
+
+  <!-- arrows -->
+  <button class="slider-arrow prev">‹</button>
+  <button class="slider-arrow next">›</button>
+
+  <!-- dots -->
+  <div class="slider-dots"></div>
+</div>
+
+    
+
+
+    <div class="page-wrapper">
+
+  
+
+      <main>
+         
+     
+
+
+        
+  
+          
+    <header class="hero-section cyber-card">
+
+      
+
+
+          <h1 style="font-size:1.7rem">Aviator Game</h1>
+          <p>Fly smart, cash out faster!</p>
+          <div class="cta-buttons">
+
+            <% if (money === false) { %>
+              <!-- <button class="play-now-btn" id="openLoginPopupBtnPlay">
+                Login to Play
+              </button> -->
+              <a  id="openLoginPopupBtnPlay" style="font-size:0.85rem">Login</a>
+              <a id="openRegisterPopupBtn" style="font-size:0.85rem">Register</a>
+              <% } else { %>
+              <!-- <button class="play-now-btn" onclick="window.location.href='/aviator'">
+                PLAY NOW
+              </button> -->
+              <a style="font-size:0.85rem" onclick="window.location.href='/aviator'">Play Now</a>
+              <a style="font-size:0.85rem" href="/menu">My Account</a>
+              <% } %>
+
+                          
+
+
+
+                      </div>
+      </header>
+          <div class="main-content-grid mt-4">
+              <section class="activity-section cyber-card">
+                  <h3><i class="fas fa-trophy"></i> Live Payouts</h3>
+                  <div id="withdrawals-feed"><div class="withdrawal-item">
+                  <span class="user">Amrik S.</span>
+                  <span class="amount">₹ 41,912</span>
+              </div><div class="withdrawal-item">
+                  <span class="user">Sattaram J.</span>
+                  <span class="amount">₹ 48,802</span>
+              </div><div class="withdrawal-item">
+                  <span class="user">Narender S.</span>
+                  <span class="amount">₹ 48,688</span>
+              </div><div class="withdrawal-item">
+                  <span class="user">Girjesh K.</span>
+                  <span class="amount">₹ 39,705</span>
+              </div><div class="withdrawal-item">
+                  <span class="user">Syamsunder G.</span>
+                  <span class="amount">₹ 11,504</span>
+              </div><div class="withdrawal-item">
+                  <span class="user">Masheen Y.</span>
+                  <span class="amount">₹ 12,911</span>
+              </div></div>
+              </section>
+              
+              <section class="payment-methods cyber-card">
+                   <h3><i class="fas fa-credit-card"></i> Secure &amp; Instant Payments</h3>
+                   <p style="color: var(--color-text-primary); max-width: 500px; margin: 1rem auto 2rem auto;">We support all major payment methods for fast and easy transactions.</p>
+                   <div class="payment-logos">
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI">
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Paytm_logo.png" alt="Paytm">
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe">
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="Google Pay">
+                   </div>
+              </section>
+          </div>
+  
+          <section class="features-section mt-5">
+              <h3 style="margin-bottom:25px">Our Digital Edge</h3>
+              <div class="features-grid">
+                  <div class="feature-card cyber-card">
+                      <i class="fas fa-bolt"></i>
+                      <h4>Instant Deposits</h4>
+                      <p>Get straight to the action. Your deposits are processed instantly.</p>
+                  </div>
+                  <div class="feature-card cyber-card">
+                      <i class="fas fa-tachometer-alt"></i>
+                      <h4>Rapid Withdrawals</h4>
+                      <p>Your winnings, your rules. Withdraw your funds with unparalleled speed.</p>
+                  </div>
+                  <div class="feature-card cyber-card">
+                      <i class="fas fa-headset"></i>
+                      <h4>24/7 Support</h4>
+                      <p>Our support team is available around the clock to assist you.</p>
+                  </div>
+              </div>
+          </section>
+      </main>
+  
+      <footer class="site-footer ">
+          <p>© 2026 JAGUAR AVIATOR. Please Play Responsibly.</p>
+      </footer>
+  
+  </div>
+
+
+<!-- 
     <img
       src="/images/banners/title.jpg"
       alt="Promo Image"
@@ -821,15 +986,15 @@
       <div>Approved Withdrawal:</div>
       <span id="withdrawal">₹ ---</span>
     </div>
-    <div class="footer">
+    <div class="footer hidden">
       <img src="/images/banners/fff.jpeg" alt="Footer Image" />
-    </div>
+    </div> -->
   
     <!-- ========================== -->
     <!-- Popup HTML Structure       -->
     <!-- ========================== -->
     <div id="loginPopupOverlay" class="popup-overlay" >
-      <div class="popup-content">
+      <div class="popup-content register-form">
         <button class="popup-close-btn" id="closeLoginPopupBtn">×</button>
         <div id="authFormContainer">
           <!-- Container for ALL forms -->
@@ -928,8 +1093,8 @@
           <!-- End loginFormView -->
 
           <!-- 2. Registration Form View -->
-          <div id="registerFormView" class="form-view" style="display: none">
-            <div class="resgister__C-form">
+          <div id="registerFormView" class="form-view " style="display: none">
+            <div class="resgister__C-form  ">
               <div class="login_container-tab">
                 <div class="tab active">
                   <div class="font30 phonefont30active">Register</div>
@@ -1762,6 +1927,10 @@
     </script>
      <script src="/Aviator/js/jquery.min.js"></script>
 
+
+    
+    
+
      <!--====== Bootstrap js ======-->
      <script src="/Aviator/js/popper.min.js"></script>
      <script src="/Aviator/js/bootstrap.bundle.min.js"></script>
@@ -1781,5 +1950,52 @@
 
      <!--====== Owl Carousel js ======-->
      <script src='/Aviator/js/owl.carousel.min.js'></script>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    
+      const track = document.querySelector(".slider-track");
+      const slides = document.querySelectorAll(".slider-track img");
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+      const dotsContainer = document.querySelector(".slider-dots");
+    
+      // safety check
+      if (!track || !slides.length || !dotsContainer) return;
+    
+      let index = 0;
+      const total = slides.length;
+    
+      // create dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement("span");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => moveTo(i));
+        dotsContainer.appendChild(dot);
+      });
+    
+      const dots = dotsContainer.querySelectorAll("span");
+    
+      function moveTo(i) {
+        index = i;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach(d => d.classList.remove("active"));
+        dots[index].classList.add("active");
+      }
+    
+      nextBtn.addEventListener("click", () => {
+        moveTo((index + 1) % total);
+      });
+    
+      prevBtn.addEventListener("click", () => {
+        moveTo((index - 1 + total) % total);
+      });
+    
+    });
+    </script>
+
 </html>
