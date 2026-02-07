@@ -2158,6 +2158,20 @@ element.style {
     color: #fff;
 }
 
+/* Ensure register modal is visible */
+#register-modal .modal-content {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1050 !important;
+}
+
+#register-modal.show {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 
 .pa-40 {
     padding: 40px;
@@ -4805,8 +4819,10 @@ box-shadow: var(--glow-shadow-green); background: #101b20;}
         <p>Fly smart, cash out faster!</p>
         <div class="cta-buttons">
             <a style="font-size:0.85rem" href="/crash">Play Now</a>
-            <a style="font-size:0.85rem" data-bs-toggle="modal" data-bs-target="#login-modal" style="cursor:pointer;">Login</a>
-            <a style="font-size:0.85rem" data-bs-toggle="modal" data-bs-target="#register-modal" style="cursor:pointer;">Register</a>
+            <a style="font-size:0.85rem; cursor:pointer;" data-bs-toggle="modal" data-bs-target="#login-modal">Loginfghjkl</a>
+            <a style="font-size:0.85rem; cursor:pointer;" data-bs-toggle="modal" data-bs-target="#register-modal">Register</a>
+              <button class="btn orange-btn md-btn custm-btn-2 mx-auto mt-1 mb-2" data-bs-toggle="modal"
+                        data-bs-target="#register-modal">REGISTER</button>
         </div>
     </header>
         <div class="main-content-grid mt-4">
@@ -5704,6 +5720,35 @@ if (sliderTrack) {
 
   console.info("Slider initialized. slides:", totalSlides);
 })();
+
+
+// Handle modal switching - close login modal when register button is clicked
+document.addEventListener('DOMContentLoaded', function() {
+    const registerButtons = document.querySelectorAll('[data-bs-target="#register-modal"]');
+    
+    registerButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Check if login modal is open
+            const loginModal = document.getElementById('login-modal');
+            if (loginModal && loginModal.classList.contains('show')) {
+                // Close the login modal first
+                const bootstrapLoginModal = bootstrap.Modal.getInstance(loginModal);
+                if (bootstrapLoginModal) {
+                    bootstrapLoginModal.hide();
+                    
+                    // Small delay to ensure login modal is closed before opening register modal
+                    setTimeout(function() {
+                        const registerModal = document.getElementById('register-modal');
+                        if (registerModal) {
+                            const bootstrapRegisterModal = new bootstrap.Modal(registerModal);
+                            bootstrapRegisterModal.show();
+                        }
+                    }, 150);
+                }
+            }
+        });
+    });
+});
 </script>
 <script>
     toastr.options = {

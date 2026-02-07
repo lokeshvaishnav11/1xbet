@@ -73,7 +73,28 @@ referrerpolicy="no-referrer"
         background-color: #0b1a2e;
         color: #e2e8f0;
         line-height: 1.5;
+        overflow-x: hidden;  /* Prevent horizontal scroll */
       }
+      
+      /* Additional fixes to prevent horizontal scrolling */
+      html {
+        overflow-x: hidden;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      .container, .container-fluid {
+        max-width: 100% !important;
+        overflow-x: hidden;
+      }
+      
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
       .header {
         display: flex;
         justify-content: space-between;
@@ -886,7 +907,7 @@ referrerpolicy="no-referrer"
                 Login to Play
               </button> -->
               <a  id="openLoginPopupBtnPlay" style="font-size:0.85rem">Login</a>
-              <a id="openRegisterPopupBtn" style="font-size:0.85rem">Register</a>
+              <a id="openRegisterPopupBtnBody" style="font-size:0.85rem">Register</a>
               <% } else { %>
               <!-- <button class="play-now-btn" onclick="window.location.href='/aviator'">
                 PLAY NOW
@@ -1045,6 +1066,7 @@ referrerpolicy="no-referrer"
                       </div>
                       <span class="van-checkbox__label">Remember password</span>
                     </div>
+
                   </div>
                   <div class="signIn__container-button">
                     <button
@@ -1497,6 +1519,15 @@ referrerpolicy="no-referrer"
             e.preventDefault();
             openPopup("register");
           });
+        
+        // Handler for register button in body section
+        const $openRegisterBtnBody = $("#openRegisterPopupBtnBody");
+        if ($openRegisterBtnBody.length)
+          $openRegisterBtnBody.on("click", function (e) {
+            e.preventDefault();
+            openPopup("register");
+          });
+        
         if ($openLoginBtnPlay.length)
           $openLoginBtnPlay.on("click", function (e) {
             e.preventDefault();
