@@ -17,7 +17,7 @@
         body {
             height: 100%;
             width: 100%;
-            background-color: #9195a3;
+            background-color: #161824;
             padding: 0;
             margin: 0;
         }
@@ -42,7 +42,7 @@
         }
 
         .mian[data-v-25d9c352] {
-            background-color: #fbfcfd
+            background-color: #161824
         }
 
         .mian .bank[data-v-25d9c352] {
@@ -67,26 +67,37 @@
         .mian .selectBox .colorBox[data-v-25d9c352] {
             height: 1.06667rem;
             width: 100%;
-            background-image: linear-gradient(90deg, #011a4f, #031c51)
+            background-image: linear-gradient(90deg, #1c1c1c, #2C2D30)
         }
 
         .mian .selectBox .txtBox[data-v-25d9c352] {
             height: 3.46667rem;
-            /* background-image: url(/assets/png/TotalAssetsBg-613aa35e.png); */
             background-repeat: no-repeat;
             background-size: 100%;
-            background: #01236e;
-
-            border-radius: .26667rem;
+            background: linear-gradient(135deg, #2C2D30 0%, #1c1c1c 100%);
+            border-radius: .32rem;
             color: #fff;
             padding: .38667rem .33333rem 0;
             position: relative;
             z-index: 99;
-            height: 1.33333rem;
+            height: 1.6rem;
             margin-top: -.8rem;
-            border-radius: .26667rem .26667rem 0 0;
-            padding: .4rem .53333rem 0;
-            position: relative
+            border-radius: .32rem .32rem 0 0;
+            padding: .5rem .64rem 0;
+            position: relative;
+            border: 2px solid rgba(135, 188, 23, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        .mian .selectBox .txtBox[data-v-25d9c352]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #87bc17, transparent);
+            opacity: 0.8;
         }
 
         .mian .selectBox .txtBox.action[data-v-25d9c352] {
@@ -120,7 +131,7 @@
 
         .mian .selectBox .txtBox .Umoney .red[data-v-25d9c352] {
             font-size: .48rem;
-            color: #4781FF
+            color: #87bc17
         }
 
         .mian .selectBox .txtBox .img.action[data-v-25d9c352] {
@@ -160,14 +171,24 @@
         }
 
         .mian .selectBox .tab .box ul li.item[data-v-25d9c352] {
-            padding: .21333rem;
-            width: calc(33.3% - .26667rem);
-            border-radius: .13333rem;
+            padding: .32rem;
+            width: calc(33.3% - .32rem);
+            border-radius: .32rem;
             white-space: nowrap;
-            background-image: linear-gradient(40deg, #e5e7f6 35%, #f5f3fb);
-            margin-bottom: .26667rem;
-            margin-right: .26667rem;
-            position: relative
+            background: linear-gradient(135deg, #2C2D30 0%, #1c1c1c 100%);
+            margin-bottom: .32rem;
+            margin-right: .32rem;
+            position: relative;
+            border: 2px solid rgba(135, 188, 23, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        
+        .mian .selectBox .tab .box ul li.item[data-v-25d9c352]:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(135, 188, 23, 0.3);
+            border-color: #87bc17;
         }
 
         .mian .selectBox .tab .box ul li.item .icon[data-v-25d9c352] {
@@ -179,7 +200,7 @@
 
         .mian .selectBox .tab .box ul li.item .icon .size[data-v-25d9c352] {
             font-size: .53333rem;
-            color: #333
+            color: #fff
         }
 
         .mian .selectBox .tab .box ul li.item .name[data-v-25d9c352] {
@@ -201,18 +222,19 @@
             width: 100%;
             height: 3.46667rem;
 
-            background: #f7ad02;
+            background: linear-gradient(135deg, #87bc17 0%, #88c504 100%);
             background-repeat: no-repeat;
             background-size: 100%;
             background-position: center;
             border-radius: .26667rem;
-            color: #0c0a0a;
+            color: #fff;
             padding: .38667rem .33333rem 0;
-            position: relative
+            position: relative;
+            box-shadow: 0 10px 30px rgb(135 187 24 / 40%);
         }
 
         .mian .selectBox .tab .box ul li.item.action .size[data-v-25d9c352] {
-            color: #070340
+            color: #fff
         }
 
         .mian .selectBox .withd[data-v-25d9c352] {
@@ -224,11 +246,15 @@
 
         .mian .selectBox .number-box[data-v-25d9c352] {
             padding: 0 .53333rem;
-            height: 1.06667rem;
-            line-height: 1.06667rem;
-            border-bottom: .02667rem solid #f6f6f6;
-            font-size: .66667rem;
-            font-weight: 600
+            height: 1.2rem;
+            line-height: 1.2rem;
+            border-bottom: .05333rem solid rgba(135, 188, 23, 0.3);
+            font-size: .72rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3a3b3f 0%, #2C2D30 100%);
+            border-radius: .32rem;
+            margin-bottom: .4rem;
+            box-shadow: 0 .16rem .53333rem rgba(0, 0, 0, 0.3), inset 0 .02667rem .08rem rgba(0, 0, 0, 0.3);
         }
 
         .mian .selectBox .number-box .symbol.action[data-v-25d9c352] {
@@ -246,7 +272,7 @@
 
         .mian .selectBox .ipnBox .red[data-v-25d9c352] {
             font-size: .42667rem;
-            color: #4781FF
+            color: #87bc17
         }
 
         .mian .selectBox .bankBox[data-v-25d9c352] {
@@ -254,17 +280,17 @@
         }
 
         .mian .selectBox .bankBox .box[data-v-25d9c352] {
-            background: #fff;
-            border: .05333rem solid #4781FF;
-            box-shadow: 0 .21333rem .37333rem 0 rgba(242, 65, 59, .14);
+            background: #2C2D30;
+            border: .05333rem solid #87bc17;
+            box-shadow: 0 .21333rem .37333rem 0 rgba(135, 188, 23, .3);
             border-radius: .13333rem
         }
 
         .mian .selectBox .bankBox .box .item[data-v-25d9c352] {
             padding: .26667rem;
-            border-bottom: .02667rem solid #d8d8d8;
+            border-bottom: .02667rem solid #3a3b3f;
             font-size: .37333rem;
-            color: #414141
+            color: #e0e0e0
         }
 
         .mian .selectBox .bankBox .box .item[data-v-25d9c352]:last-child {
@@ -276,22 +302,22 @@
         }
 
         .mian .selectBox .conBox .des[data-v-25d9c352] {
-            color: #090909;
+            color: #e0e0e0;
             font-size: .42667rem;
             margin-bottom: .4rem
         }
 
         .mian .selectBox .conBox .box[data-v-25d9c352] {
-            background: #fff;
-            border: .05333rem solid #4781FF;
-            box-shadow: 0 .21333rem .37333rem 0 rgba(238, 124, 120, .36);
+            background: #2C2D30;
+            border: .05333rem solid #87bc17;
+            box-shadow: 0 .21333rem .37333rem 0 rgba(135, 188, 23, .3);
             border-radius: .13333rem
         }
 
         .mian .selectBox .conBox .box .tit[data-v-25d9c352] {
             height: .93333rem;
             padding: 0 .26667rem;
-            color: #4781FF
+            color: #87bc17
         }
 
         .mian .selectBox .conBox .box .tit.action[data-v-25d9c352] {
@@ -302,8 +328,8 @@
             height: .93333rem;
             padding: 0 .4rem;
             line-height: .93333rem;
-            color: #414141;
-            border-bottom: .02667rem solid #ebebeb
+            color: #e0e0e0;
+            border-bottom: .02667rem solid #3a3b3f
         }
 
         .mian .selectBox .conBox .box .list .item .name[data-v-25d9c352] {
@@ -320,18 +346,27 @@
         }
 
         .mian .selectBox .conBox .box .list .icon.action[data-v-25d9c352] {
-            border-color: #fdd0cf;
-            background-color: #fdd0cf
+            border-color: #87bc17;
+            background-color: #87bc17
         }
 
         .mian .selectBox .conBox .box .add[data-v-25d9c352] {
             -webkit-line-clamp: 1;
-            height: .93333rem;
-            padding: 0 .26667rem;
-            background: #f7ad02;
-            border-radius: .26667rem;
-            color: #030915;
-            font-weight: 600
+            height: 1.2rem;
+            padding: 0 .4rem;
+            background: linear-gradient(135deg, #87bc17 0%, #88c504 100%);
+            border-radius: .64rem;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .02rem;
+            box-shadow: 0 8px 20px rgba(135, 188, 23, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .mian .selectBox .conBox .box .add[data-v-25d9c352]:hover {
+            box-shadow: 0 12px 30px rgba(135, 188, 23, 0.5);
+            transform: translateY(-2px);
         }
 
         .mian .selectBox .conBox .box .add .plus[data-v-25d9c352] {
@@ -339,7 +374,7 @@
             height: .66667rem;
             width: .66667rem;
             border-radius: .66667rem;
-            background-color: rgba(71, 129, 255)
+            background-color: #fff
         }
 
         .mian .selectBox .requiredBox[data-v-25d9c352] {
@@ -347,23 +382,68 @@
         }
 
         .mian .selectBox .requiredBox .box[data-v-25d9c352] {
-            height: 1.06667rem;
-            border: .02667rem solid #4781FF;
-            border-radius: .13333rem;
-            overflow: hidden
+            height: 1.2rem;
+            border: 2px solid #87bc17;
+            border-radius: .32rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #3a3b3f 0%, #2C2D30 100%);
+            box-shadow: 0 8px 20px rgba(135, 188, 23, 0.2), inset 0 1px 3px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .mian .selectBox .requiredBox .box[data-v-25d9c352]:focus-within {
+            border-color: #88c504;
+            box-shadow: 0 10px 30px rgba(135, 188, 23, 0.4), inset 0 1px 3px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
         }
 
         .mian .selectBox .requiredBox .box .input[data-v-25d9c352] {
             height: 100%;
             border: none;
             width: 100%;
-            padding-left: .26667rem
+            padding-left: .26667rem;
+            background: transparent;
+            color: #e0e0e0;
         }
 
         .mian .withdrawal-btn .btn[data-v-25d9c352] {
-            height: 1.06667rem;
-            width: 60%;
-            box-shadow: 0 0 .26667rem .02667rem rgba(242, 65, 59, .27)
+            height: 1.33333rem;
+            width: 70%;
+            background: linear-gradient(135deg, #87bc17 0%, #88c504 100%);
+            box-shadow: 0 15px 40px rgb(135 187 24 / 50%), 0 0 30px rgba(135, 188, 23, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-weight: 700;
+            font-size: .48rem;
+            border-radius: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .04rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mian .withdrawal-btn .btn[data-v-25d9c352]::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .mian .withdrawal-btn .btn[data-v-25d9c352]:active::before {
+            width: 400px;
+            height: 400px;
+        }
+        
+        .mian .withdrawal-btn .btn[data-v-25d9c352]:hover {
+            box-shadow: 0 20px 50px rgb(135 187 24 / 60%), 0 0 40px rgba(135, 188, 23, 0.4);
+            transform: translateY(-4px);
         }
 
         html {
@@ -711,7 +791,15 @@
             z-index: 1;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, .7)
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            animation: overlayFadeIn 0.3s ease;
+        }
+        
+        @keyframes overlayFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .van-info {
@@ -2813,12 +2901,13 @@
             display: flex;
             box-sizing: border-box;
             width: 100%;
-            padding: .26667rem .42667rem;
+            padding: .4rem .53333rem;
             overflow: hidden;
-            color: #323233;
-            font-size: .37333rem;
+            color: #e0e0e0;
+            font-size: .42667rem;
             line-height: .64rem;
-            background-color: #fff
+            background-color: transparent;
+            transition: all 0.3s ease;
         }
 
         .van-cell:after {
@@ -2829,7 +2918,7 @@
             right: 0;
             bottom: 0;
             left: .42667rem;
-            border-bottom: .02667rem solid #ebedf0;
+            border-bottom: .02667rem solid rgba(135, 188, 23, 0.2);
             -webkit-transform: scaleY(.5);
             transform: scaleY(.5)
         }
@@ -2856,10 +2945,11 @@
         .van-cell__value {
             position: relative;
             overflow: hidden;
-            color: #969799;
+            color: #87bc17;
             text-align: right;
             vertical-align: middle;
-            word-wrap: break-word
+            word-wrap: break-word;
+            font-weight: 600;
         }
 
         .van-cell__value--alone {
@@ -2889,7 +2979,7 @@
         }
 
         .van-cell--clickable:active {
-            background-color: #f2f3f5
+            background-color: rgba(135, 188, 23, 0.1);
         }
 
         .van-cell--required {
@@ -3071,20 +3161,24 @@
             min-width: 0;
             margin: 0;
             padding: 0;
-            color: #323233;
+            color: #e0e0e0;
             line-height: inherit;
             text-align: left;
             background-color: transparent;
             border: 0;
-            resize: none
+            resize: none;
+            font-weight: 600;
+            font-size: .42667rem;
         }
 
         .van-field__control::-webkit-input-placeholder {
-            color: #c8c9cc
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
         }
 
         .van-field__control::placeholder {
-            color: #c8c9cc
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
         }
 
         .van-field__control:disabled {
@@ -3292,23 +3386,48 @@
             position: fixed;
             max-height: 100%;
             overflow-y: auto;
-            background-color: #fff;
-            -webkit-transition: -webkit-transform .3s;
-            transition: -webkit-transform .3s;
-            transition: transform .3s;
-            transition: transform .3s, -webkit-transform .3s;
-            -webkit-overflow-scrolling: touch
+            background: rgba(28, 28, 28, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(135, 188, 23, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(135, 188, 23, 0.2);
+            -webkit-transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .van-popup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #87bc17, transparent);
+            opacity: 0.8;
         }
 
         .van-popup--center {
             top: 50%;
             left: 50%;
-            -webkit-transform: translate3d(-50%, -50%, 0);
-            transform: translate3d(-50%, -50%, 0)
+            -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
+            transform: translate3d(-50%, -50%, 0) scale(1);
+            animation: popupFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+                transform: translate3d(-50%, -50%, 0) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(-50%, -50%, 0) scale(1);
+            }
         }
 
         .van-popup--center.van-popup--round {
-            border-radius: .53333rem
+            border-radius: .8rem;
         }
 
         .van-popup--top {
@@ -4101,34 +4220,41 @@
             height: 1.17333rem;
             margin: 0;
             padding: 0;
-            font-size: .42667rem;
+            font-size: .48rem;
+            font-weight: 700;
             line-height: 1.2;
             text-align: center;
-            border-radius: .05333rem;
+            border-radius: .32rem;
             cursor: pointer;
-            -webkit-transition: opacity .2s;
-            transition: opacity .2s;
-            -webkit-appearance: none
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+            -webkit-appearance: none;
+            text-transform: uppercase;
+            letter-spacing: .02rem;
+            overflow: hidden;
         }
 
         .van-button:before {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
             border: inherit;
-            border-color: #000;
-            border-radius: inherit;
+            border-color: transparent;
+            border-radius: 50%;
             -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             opacity: 0;
-            content: " "
+            content: " ";
+            transition: width 0.6s, height 0.6s, opacity 0.6s;
         }
 
         .van-button:active:before {
-            opacity: .1
+            width: 300px;
+            height: 300px;
+            opacity: 1;
         }
 
         .van-button--disabled:before,
@@ -4144,20 +4270,40 @@
 
         .van-button--primary {
             color: #fff;
-            background-color: #07c160;
-            border: .02667rem solid #07c160
+            background: linear-gradient(135deg, #87bc17 0%, #88c504 100%);
+            border: .05333rem solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 .21333rem .8rem rgba(135, 188, 23, 0.5);
+        }
+        
+        .van-button--primary:hover {
+            box-shadow: 0 .26667rem 1rem rgba(135, 188, 23, 0.6);
+            transform: translateY(-.05333rem);
         }
 
         .van-button--info {
             color: #fff;
-            background-color: #1989fa;
-            border: .02667rem solid #1989fa
+            background: linear-gradient(135deg, #2C2D30 0%, #1c1c1c 100%);
+            border: .05333rem solid #87bc17;
+            box-shadow: 0 .21333rem .8rem rgba(135, 188, 23, 0.3);
+        }
+        
+        .van-button--info:hover {
+            border-color: #88c504;
+            box-shadow: 0 .26667rem 1rem rgba(135, 188, 23, 0.4);
+            transform: translateY(-.05333rem);
         }
 
         .van-button--danger {
             color: #fff;
-            background-color: #ee0a24;
-            border: .02667rem solid #ee0a24
+            background: linear-gradient(135deg, #fa4d00 0%, #fa5e00 100%);
+            border: .05333rem solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 .21333rem .8rem rgba(250, 65, 0, 0.4);
+        }
+        
+        .van-button--danger:hover {
+            background: linear-gradient(135deg, #fa5e00 0%, #fa7c00 100%);
+            box-shadow: 0 .26667rem 1rem rgba(250, 65, 0, 0.5);
+            transform: translateY(-.05333rem);
         }
 
         .van-button--warning {
@@ -4416,19 +4562,63 @@
             left: 50%;
             width: 8.53333rem;
             overflow: hidden;
-            font-size: .42667rem;
-            background-color: #fff;
-            border-radius: .42667rem;
-            -webkit-transform: translate3d(-50%, -50%, 0);
-            transform: translate3d(-50%, -50%, 0);
+            font-size: .48rem;
+            background: rgba(28, 28, 28, 0.9);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 2px solid rgba(135, 188, 23, 0.4);
+            border-radius: .8rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 
+                        0 0 60px rgba(135, 188, 23, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
+            transform: translate3d(-50%, -50%, 0) scale(1);
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            -webkit-transition: .3s;
-            transition: .3s;
-            -webkit-transition-property: opacity, -webkit-transform;
-            transition-property: opacity, -webkit-transform;
-            transition-property: transform, opacity;
-            transition-property: transform, opacity, -webkit-transform
+            -webkit-transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: dialogGlassIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .van-dialog::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #87bc17, #88c504, transparent);
+            opacity: 0.9;
+        }
+        
+        .van-dialog::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(135, 188, 23, 0.05) 0%, transparent 70%);
+            animation: dialogGlow 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes dialogGlassIn {
+            from {
+                opacity: 0;
+                transform: translate3d(-50%, -50%, 0) scale(0.8);
+                filter: blur(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(-50%, -50%, 0) scale(1);
+                filter: blur(0);
+            }
+        }
+        
+        @keyframes dialogGlow {
+            0%, 100% { transform: rotate(0deg); opacity: 0.3; }
+            50% { transform: rotate(180deg); opacity: 0.6; }
         }
 
         @media(max-width:321px) {
@@ -4438,10 +4628,17 @@
         }
 
         .van-dialog__header {
-            padding-top: .64rem;
-            font-weight: 500;
-            line-height: .64rem;
-            text-align: center
+            padding-top: .8rem;
+            font-weight: 700;
+            font-size: .53333rem;
+            line-height: .72rem;
+            text-align: center;
+            color: #87bc17;
+            text-transform: uppercase;
+            letter-spacing: .04rem;
+            text-shadow: 0 2px 10px rgba(135, 188, 23, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .van-dialog__header--isolated {
@@ -4450,19 +4647,23 @@
 
         .van-dialog__message {
             max-height: 60vh;
-            padding: .64rem;
+            padding: .72rem;
             overflow-y: auto;
-            font-size: .37333rem;
-            line-height: .53333rem;
+            font-size: .42667rem;
+            line-height: .64rem;
             white-space: pre-wrap;
             text-align: center;
             word-wrap: break-word;
-            -webkit-overflow-scrolling: touch
+            -webkit-overflow-scrolling: touch;
+            color: #e0e0e0;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
 
         .van-dialog__message--has-title {
-            padding-top: .32rem;
-            color: #646566
+            padding-top: .4rem;
+            color: rgba(224, 224, 224, 0.8);
         }
 
         .van-dialog__message--left {
@@ -4476,7 +4677,11 @@
         .van-dialog__footer {
             overflow: hidden;
             -webkit-user-select: none;
-            user-select: none
+            user-select: none;
+            padding: .4rem;
+            border-top: 1px solid rgba(135, 188, 23, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .van-dialog__footer--buttons {
@@ -4492,12 +4697,25 @@
         }
 
         .van-dialog .van-button {
-            border: 0
+            border: 0;
+            margin: .16rem;
+            border-radius: .64rem;
+            height: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .02rem;
         }
 
         .van-dialog__confirm,
         .van-dialog__confirm:active {
-            color: #1989fa
+            color: #fff;
+            background: linear-gradient(135deg, #87bc17 0%, #88c504 100%);
+            box-shadow: 0 8px 20px rgba(135, 188, 23, 0.4);
+        }
+        
+        .van-dialog__confirm:hover {
+            box-shadow: 0 12px 30px rgba(135, 188, 23, 0.5);
+            transform: translateY(-2px);
         }
 
         .van-dialog-bounce-enter {
@@ -5284,7 +5502,11 @@
         }
 
         .van-cell-group {
-            background-color: #fff
+            background: linear-gradient(135deg, #2C2D30 0%, #1c1c1c 100%);
+            border-radius: .32rem;
+            border: .05333rem solid rgba(135, 188, 23, 0.3);
+            box-shadow: 0 .21333rem .8rem rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
 
         .van-cell-group__title {
@@ -7584,13 +7806,13 @@
         }
 
         /* #faq-link {
-            color: #0078d7; /* Blue color for the link */
-        text-decoration: none;
+            color: #0078d7;
+            text-decoration: none;
         }
 
-        */ #faq-link:hover {
+        #faq-link:hover {
             text-decoration: underline;
-        }
+        } */
 
 
 

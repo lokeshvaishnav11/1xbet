@@ -892,7 +892,7 @@ referrerpolicy="no-referrer"
                 PLAY NOW
               </button> -->
               <a style="font-size:0.85rem" onclick="window.location.href='/aviator'">Play Now</a>
-              <a style="font-size:0.85rem" href="/menu">My Account</a>
+              <a style="font-size:0.85rem" href="/logout">Logout</a>
               <% } %>
 
                           
@@ -904,25 +904,7 @@ referrerpolicy="no-referrer"
           <div class="main-content-grid mt-4">
               <section class="activity-section cyber-card">
                   <h3><i class="fas fa-trophy"></i> Live Payouts</h3>
-                  <div id="withdrawals-feed"><div class="withdrawal-item">
-                  <span class="user">Amrik S.</span>
-                  <span class="amount">₹ 41,912</span>
-              </div><div class="withdrawal-item">
-                  <span class="user">Sattaram J.</span>
-                  <span class="amount">₹ 48,802</span>
-              </div><div class="withdrawal-item">
-                  <span class="user">Narender S.</span>
-                  <span class="amount">₹ 48,688</span>
-              </div><div class="withdrawal-item">
-                  <span class="user">Girjesh K.</span>
-                  <span class="amount">₹ 39,705</span>
-              </div><div class="withdrawal-item">
-                  <span class="user">Syamsunder G.</span>
-                  <span class="amount">₹ 11,504</span>
-              </div><div class="withdrawal-item">
-                  <span class="user">Masheen Y.</span>
-                  <span class="amount">₹ 12,911</span>
-              </div></div>
+                  <div id="withdrawals-feed"></div>
               </section>
               
               <section class="payment-methods cyber-card">
@@ -960,7 +942,7 @@ referrerpolicy="no-referrer"
       </main>
   
       <footer class="site-footer ">
-          <p>© 2026 JAGUAR AVIATOR. Please Play Responsibly.</p>
+          <p>© 2026 1XBET AVIATOR. Please Play Responsibly.</p>
       </footer>
   
   </div>
@@ -1994,6 +1976,119 @@ referrerpolicy="no-referrer"
       prevBtn.addEventListener("click", () => {
         moveTo((index - 1 + total) % total);
       });
+    
+      // --- ENHANCED LIVE WITHDRAWALS FEED LOGIC WITH ANIMATIONS ---
+      const withdrawalsFeed = document.getElementById('withdrawals-feed');
+      if (withdrawalsFeed) {
+          const users = [
+              'Iram S.', 'Pooja C.', 'Suresh K.', 'Salim M.', 'Subhash P.', 'Vishnu P.', 'Ram K.', 'Vijay B.', 'Jeet P.', 'Vidya N.',
+              'Aluddin H.', 'Mrityunjay S.', 'Masheen Y.', 'Syamsunder G.', 'Girjesh K.', 'Narender S.', 'Sattaram J.', 'Amrik S.', 'Vishal K.', 'Yogesh S.',
+              'Mangi R.', 'Habib K.', 'Nayan S.', 'Deepak R.', 'Sunil K.', 'Pradeep K.', 'Narayan R.', 'Suman V.', 'Rahul M.', 'Sabir A.',
+              'Vikrant P.', 'Ravi K.', 'Amit S.', 'Priya M.', 'Neha R.', 'Rohan D.', 'Divya S.', 'Karan V.', 'Anjali T.', 'Mohit G.',
+              'Sneha B.', 'Arjun K.', 'Kavita P.', 'Rajesh M.', 'Simran K.', 'Varun S.', 'Megha R.', 'Siddharth L.', 'Pallavi N.', 'Kunal J.'
+          ];
+          
+          let userIndex = 0;
+          const maxItems = 6;
+          let animationQueue = [];
+
+          // Get random amount between 1000 and 50000
+          const getRandomAmount = () => Math.floor(Math.random() * (50000 - 1000) + 1000);
+          
+          // Get user initials for avatar
+          const getUserInitials = (name) => {
+              const parts = name.split(' ');
+              return parts.map(p => p[0]).join('');
+          };
+          
+          // Format time ago
+          const getTimeAgo = () => {
+              const seconds = Math.floor(Math.random() * 60);
+              if (seconds < 10) return 'Just now';
+              if (seconds < 60) return `${seconds}s ago`;
+              return '1m ago';
+          };
+          
+          // Animate number counter
+          const animateCounter = (element, target) => {
+              const duration = 800;
+              const start = 0;
+              const increment = target / (duration / 16);
+              let current = start;
+              
+              const timer = setInterval(() => {
+                  current += increment;
+                  if (current >= target) {
+                      current = target;
+                      clearInterval(timer);
+                  }
+                  element.textContent = '₹ ' + Math.floor(current).toLocaleString('en-IN');
+              }, 16);
+          };
+
+          const showRandomWithdrawal = () => {
+              const user = users[userIndex];
+              const amount = getRandomAmount();
+              const initials = getUserInitials(user);
+              const timeAgo = getTimeAgo();
+
+              const newItem = document.createElement('div');
+              newItem.classList.add('withdrawal-item', 'new-entry');
+              newItem.innerHTML = `
+                  <div class="user-section">
+                      <div class="user-avatar">${initials}</div>
+                      <div class="user-info">
+                          <span class="user">${user}</span>
+                          <span class="timestamp">${timeAgo}</span>
+                      </div>
+                  </div>
+                  <div class="amount-section">
+                      <span class="amount">₹ 0</span>
+                      <span class="status-badge">✓ SUCCESS</span>
+                  </div>
+              `;
+
+              // Add with animation
+              withdrawalsFeed.prepend(newItem);
+              
+              // Animate the counter
+              const amountElement = newItem.querySelector('.amount');
+              setTimeout(() => {
+                  animateCounter(amountElement, amount);
+              }, 100);
+              
+              // Remove new-entry class after animation
+              setTimeout(() => {
+                  newItem.classList.remove('new-entry');
+              }, 1600);
+
+              // Remove oldest item with animation if exceeds max
+              if (withdrawalsFeed.children.length > maxItems) {
+                  const lastItem = withdrawalsFeed.lastElementChild;
+                  lastItem.classList.add('removing');
+                  
+                  setTimeout(() => {
+                      if (lastItem.parentNode) {
+                          lastItem.remove();
+                      }
+                  }, 500);
+              }
+
+              userIndex = (userIndex + 1) % users.length;
+          };
+
+          // Initial population with staggered animation
+          for (let i = 0; i < maxItems; i++) {
+              setTimeout(() => {
+                  showRandomWithdrawal();
+              }, i * 150);
+          }
+          
+          // Set interval to add new items every second
+          setTimeout(() => {
+              setInterval(showRandomWithdrawal, 1000);
+          }, maxItems * 150 + 500);
+      }
     
     });
     </script>

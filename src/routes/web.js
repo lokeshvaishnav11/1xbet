@@ -95,6 +95,7 @@ router.post('/admin/manager/settings/increaseWallet',adminController.middlewareA
    router.post("/api/sent/otp/verify", accountController.verifyCode)
    router.post("/api/sent/otp/verify/reset", accountController.verifyCodePass)
    router.post("/api/resetPasword", accountController.forGotPassword)
+   router.get("/logout", accountController.logout)
 
    // page home
    router.get("/", (req, res) => {

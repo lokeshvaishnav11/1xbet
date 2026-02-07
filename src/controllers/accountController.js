@@ -425,6 +425,11 @@ const keFuMenu = async (req, res) => {
    return res.render("keFuMenu.ejs", { telegram })
 }
 
+const logout = async (req, res) => {
+   res.clearCookie('auth');
+   return res.redirect('/');
+}
+
 
 module.exports = {
    login,
@@ -436,4 +441,5 @@ module.exports = {
    verifyCodePass,
    forGotPassword,
    keFuMenu,
+   logout,
 }

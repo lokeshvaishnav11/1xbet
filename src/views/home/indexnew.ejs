@@ -7,7 +7,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
     <!--====== Title ======-->
-    <title>Jaguar Win Aviator Game</title>
+    <title>1xbet Win Aviator Game</title>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="https://jaguar-win.com/images/logo.png" type="image/png" />
@@ -92,9 +92,37 @@ body {
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    overflow: auto;
+    overflow-x: hidden;  /* Prevent horizontal scroll */
     /*background: rgb(221, 228, 236);*/
     background: #161824;
+}
+
+/* Additional fixes to prevent horizontal scrolling */
+html {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container, .container-fluid {
+    max-width: 100% !important;
+    overflow-x: hidden;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Fix for any elements that might cause overflow */
+.modal, .modal-dialog, .modal-content {
+    overflow-x: hidden;
+}
+
+.carousel, .carousel-inner, .carousel-item {
+    overflow-x: hidden;
 }
 
 @font-face {
@@ -3956,29 +3984,53 @@ width: 100%;
         /* --- Game Showcase (Slider) --- */
         .showcase-section {
             margin: 56px auto 0px auto;
-    height: 250px;
-   
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    max-width: 100%;
-    /*margin: 0 auto;*/
-  }
+            height: 200px;
+            overflow: hidden;
+            border: 2px solid rgba(135, 188, 23, 0.3);
+            border-radius: 12px;
+            max-width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 
+                        0 0 30px rgba(135, 188, 23, 0.2);
+            position: relative;
+        }
+        
+        .showcase-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #87bc17, transparent);
+            opacity: 0.8;
+            z-index: 2;
+        }
 
-  .slider-container { position: relative; width: 100%; height: 100%; }
+  .slider-container { 
+    position: relative; 
+    width: 100%; 
+    height: 200px; 
+  }
+  
   .slider-track {
     display: flex;
-    height: 100%;
-    transition: transform 0.5s ease-in-out;
+    height: 200px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
 
   /* each image should fill the slider container exactly */
   .slider-track img {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
     flex-shrink: 0;
-    display: block; /* remove inline gaps */
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .slider-container:hover .slider-track img {
+    transform: scale(1.02);
   }
 
   .slider-dots {
@@ -4037,22 +4089,220 @@ box-shadow: var(--glow-shadow-green); background: #101b20;}
         /* --- Live Activity Feed --- */
         .activity-section h3 {
             text-align: center; margin-bottom: 1.5rem; font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
         }
+        
+        .activity-section h3::after {
+            content: 'LIVE';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, #ff4444 0%, #ff6b6b 100%);
+            padding: 4px 12px;
+            border-radius: 20px;
+            animation: livePulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+            letter-spacing: 1px;
+        }
+        
+        @keyframes livePulse {
+            0%, 100% {
+                transform: translateY(-50%) scale(1);
+                box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+            }
+            50% {
+                transform: translateY(-50%) scale(1.08);
+                box-shadow: 0 0 30px rgba(255, 68, 68, 0.9);
+            }
+        }
+        
         #withdrawals-feed {
-            height: 350px; overflow-y: auto; padding-right: 10px;
+            height: 400px; 
+            overflow: hidden;
+            padding: 0 10px;
+            position: relative;
         }
+        
         .withdrawal-item {
-            display: flex; justify-content: space-between; align-items: center;
-            background-color: rgba(0,0,0,0.2); padding: 0.8rem 1rem;
-            border-radius: 4px; margin-bottom: 0.75rem;
-            border-left: 4px solid var(--color-accent-primary);
-            animation: slideInUp 0.5s ease-out;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.9) 0%, rgba(44, 45, 48, 0.9) 100%);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 1rem 1.3rem;
+            border-radius: 12px; 
+            margin-bottom: 0.85rem;
+            border: 2px solid rgba(135, 188, 23, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 
+                        0 0 20px rgba(135, 188, 23, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: slideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: top center;
         }
+        
+        .withdrawal-item.new-entry {
+            animation: slideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                       newEntryPulse 1s ease-in-out;
+        }
+        
+        .withdrawal-item.removing {
+            animation: slideOutToBottom 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .withdrawal-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #87bc17 0%, #88c504 100%);
+            box-shadow: 0 0 15px rgba(135, 188, 23, 0.6);
+        }
+        
+        .withdrawal-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #87bc17, transparent);
+            opacity: 0.6;
+        }
+        
+        .withdrawal-item:hover {
+            transform: translateX(5px);
+            border-color: rgba(135, 188, 23, 0.7);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 
+                        0 0 30px rgba(135, 188, 23, 0.4);
+        }
+        
+        .withdrawal-item .user-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .withdrawal-item .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #87bc17 0%, #88c504 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #1c1c1c;
+            box-shadow: 0 4px 15px rgba(135, 188, 23, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .withdrawal-item .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
         .withdrawal-item .user {
-            font-weight: 600; font-size: 1rem; color: #fff;
+            font-weight: 700; 
+            font-size: 1.05rem; 
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
         }
+        
+        .withdrawal-item .timestamp {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
+        
+        .withdrawal-item .amount-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: relative;
+        }
+        
         .withdrawal-item .amount {
-            color: var(--color-accent-primary); font-weight: 700;
+            color: #88c504; 
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-shadow: 0 0 15px rgba(135, 188, 23, 0.6);
+            letter-spacing: 0.5px;
+        }
+        
+        .withdrawal-item .status-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #88c504;
+            background: rgba(135, 188, 23, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 4px;
+            border: 1px solid rgba(135, 188, 23, 0.3);
+        }
+        
+        @keyframes slideInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+                filter: blur(5px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(5px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+        
+        @keyframes newEntryPulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 
+                            0 0 20px rgba(135, 188, 23, 0.2);
+            }
+            50% {
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 
+                            0 0 40px rgba(135, 188, 23, 0.6);
+            }
+        }
+        
+        @keyframes slideOutToBottom {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                max-height: 100px;
+                margin-bottom: 0.85rem;
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateY(20px) scale(0.95);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+                max-height: 0;
+                margin-bottom: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
         }
 
         /* --- Payment Methods --- */
@@ -4554,9 +4804,10 @@ box-shadow: var(--glow-shadow-green); background: #101b20;}
         <h1 style="font-size:1.7rem">Aviator Game</h1>
         <p>Fly smart, cash out faster!</p>
         <div class="cta-buttons">
-                            <a style="font-size:0.85rem" href="/crash">Play Now</a>
-                <a style="font-size:0.85rem" href="/menu">My Account</a>
-                    </div>
+            <a style="font-size:0.85rem" href="/crash">Play Now</a>
+            <a style="font-size:0.85rem" data-bs-toggle="modal" data-bs-target="#login-modal" style="cursor:pointer;">Login</a>
+            <a style="font-size:0.85rem" data-bs-toggle="modal" data-bs-target="#register-modal" style="cursor:pointer;">Register</a>
+        </div>
     </header>
         <div class="main-content-grid mt-4">
             <section class="activity-section cyber-card">
@@ -4599,12 +4850,12 @@ box-shadow: var(--glow-shadow-green); background: #101b20;}
     </main>
 
     <footer class="site-footer ">
-        <p>&copy; 2026 JAGUAR AVIATOR. Please Play Responsibly.</p>
+        <p>&copy; 2026 1XBET AVIATOR. Please Play Responsibly.</p>
     </footer>
 
 </div>
     <!--<div class="footer">-->
-<!--    ❤ Jagaur Win © 2025-->
+<!--    ❤ 1xbet Win © 2025-->
 <!--  </div>-->
 
 <style>
@@ -4719,7 +4970,7 @@ box-shadow: var(--glow-shadow-green); background: #101b20;}
 
     if (clickInterval < 250) { // Double-click threshold
       // Double-click action
-      window.location.href = 'JAGUAR CLUB.apk';
+      window.location.href = '1XBET CLUB.apk';
     } else {
       // Single-click action: Start dragging
       const touchEvent = event.type === 'touchstart' ? event.touches[0] : event;
@@ -5243,45 +5494,117 @@ if (sliderTrack) {
 }
 
 
-    // --- LIVE WITHDRAWALS FEED LOGIC ---
+    // --- ENHANCED LIVE WITHDRAWALS FEED LOGIC WITH ANIMATIONS ---
     const withdrawalsFeed = document.getElementById('withdrawals-feed');
     if (withdrawalsFeed) {
         const users = [
             'Iram S.', 'Pooja C.', 'Suresh K.', 'Salim M.', 'Subhash P.', 'Vishnu P.', 'Ram K.', 'Vijay B.', 'Jeet P.', 'Vidya N.',
             'Aluddin H.', 'Mrityunjay S.', 'Masheen Y.', 'Syamsunder G.', 'Girjesh K.', 'Narender S.', 'Sattaram J.', 'Amrik S.', 'Vishal K.', 'Yogesh S.',
-            'Mangi R.', 'Habib K.', 'Nayan S.', 'Deepak R.', 'Sunil K.', 'Pradeep K.', 'Narayan R.', 'Suman V.', 'Rahul M.', 'Sabir A.'
+            'Mangi R.', 'Habib K.', 'Nayan S.', 'Deepak R.', 'Sunil K.', 'Pradeep K.', 'Narayan R.', 'Suman V.', 'Rahul M.', 'Sabir A.',
+            'Vikrant P.', 'Ravi K.', 'Amit S.', 'Priya M.', 'Neha R.', 'Rohan D.', 'Divya S.', 'Karan V.', 'Anjali T.', 'Mohit G.',
+            'Sneha B.', 'Arjun K.', 'Kavita P.', 'Rajesh M.', 'Simran K.', 'Varun S.', 'Megha R.', 'Siddharth L.', 'Pallavi N.', 'Kunal J.'
         ];
+        
         let userIndex = 0;
         const maxItems = 6;
+        let animationQueue = [];
 
+        // Get random amount between 1000 and 50000
         const getRandomAmount = () => Math.floor(Math.random() * (50000 - 1000) + 1000);
+        
+        // Get user initials for avatar
+        const getUserInitials = (name) => {
+            const parts = name.split(' ');
+            return parts.map(p => p[0]).join('');
+        };
+        
+        // Format time ago
+        const getTimeAgo = () => {
+            const seconds = Math.floor(Math.random() * 60);
+            if (seconds < 10) return 'Just now';
+            if (seconds < 60) return `${seconds}s ago`;
+            return '1m ago';
+        };
+        
+        // Animate number counter
+        const animateCounter = (element, target) => {
+            const duration = 800;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = '₹ ' + Math.floor(current).toLocaleString('en-IN');
+            }, 16);
+        };
 
         const showRandomWithdrawal = () => {
             const user = users[userIndex];
-            const amount = getRandomAmount().toLocaleString('en-IN');
+            const amount = getRandomAmount();
+            const initials = getUserInitials(user);
+            const timeAgo = getTimeAgo();
 
             const newItem = document.createElement('div');
-            newItem.classList.add('withdrawal-item');
+            newItem.classList.add('withdrawal-item', 'new-entry');
             newItem.innerHTML = `
-                <span class="user">${user}</span>
-                <span class="amount">₹ ${amount}</span>
+                <div class="user-section">
+                    <div class="user-avatar">${initials}</div>
+                    <div class="user-info">
+                        <span class="user">${user}</span>
+                        <span class="timestamp">${timeAgo}</span>
+                    </div>
+                </div>
+                <div class="amount-section">
+                    <span class="amount">₹ 0</span>
+                    <span class="status-badge">✓ SUCCESS</span>
+                </div>
             `;
 
+            // Add with animation
             withdrawalsFeed.prepend(newItem);
+            
+            // Animate the counter
+            const amountElement = newItem.querySelector('.amount');
+            setTimeout(() => {
+                animateCounter(amountElement, amount);
+            }, 100);
+            
+            // Remove new-entry class after animation
+            setTimeout(() => {
+                newItem.classList.remove('new-entry');
+            }, 1600);
 
+            // Remove oldest item with animation if exceeds max
             if (withdrawalsFeed.children.length > maxItems) {
-                withdrawalsFeed.lastElementChild.remove();
+                const lastItem = withdrawalsFeed.lastElementChild;
+                lastItem.classList.add('removing');
+                
+                setTimeout(() => {
+                    if (lastItem.parentNode) {
+                        lastItem.remove();
+                    }
+                }, 500);
             }
 
             userIndex = (userIndex + 1) % users.length;
         };
 
-        // Initial population
+        // Initial population with staggered animation
         for (let i = 0; i < maxItems; i++) {
-            showRandomWithdrawal();
+            setTimeout(() => {
+                showRandomWithdrawal();
+            }, i * 150);
         }
-        // Set interval to add new items
-        setInterval(showRandomWithdrawal, 3000);
+        
+        // Set interval to add new items every second
+        setTimeout(() => {
+            setInterval(showRandomWithdrawal, 1000);
+        }, maxItems * 150 + 500);
     }
 });
 </script>
