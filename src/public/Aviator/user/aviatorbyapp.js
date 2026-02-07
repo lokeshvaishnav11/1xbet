@@ -261,6 +261,8 @@ nextcrash();
             place_bet_now();
         }
         new_game_generated();
+        startTotalWinning();
+
         $('#main_bet_now').prop('disabled', false);
         $('#extra_bet_now').prop('disabled', false);
         hide_loading_game();
@@ -390,6 +392,7 @@ nextcrash();
                 // gameover(msg.crash);
                 // crash_plane(parseFloat(msg.crash.toFixed(2)));
                 // incrementor(parseFloat(msg.crash.toFixed(2)));
+               resetTotalWinning();
 
                 gameover(xyz);
                 crash_plane(parseFloat(xyz.toFixed(2)));

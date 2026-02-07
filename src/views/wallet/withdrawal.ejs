@@ -71,16 +71,16 @@
         }
 
         .mian .selectBox .txtBox[data-v-25d9c352] {
-    height: 3.46667rem;
-    /* background-image: url(/assets/png/TotalAssetsBg-613aa35e.png); */
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background:#01236e;
-    
-    border-radius: .26667rem;
-    color: #fff;
-    padding: .38667rem .33333rem 0;
-    position: relative;
+            height: 3.46667rem;
+            /* background-image: url(/assets/png/TotalAssetsBg-613aa35e.png); */
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background: #01236e;
+
+            border-radius: .26667rem;
+            color: #fff;
+            padding: .38667rem .33333rem 0;
+            position: relative;
             z-index: 99;
             height: 1.33333rem;
             margin-top: -.8rem;
@@ -197,18 +197,18 @@
             bottom: 0
         }
 
-     .mian .selectBox .tab .box ul li.item.action[data-v-25d9c352] {
-           width: 100%;
-    height: 3.46667rem;
-   
-    background: #f7ad02;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    border-radius: .26667rem;
-    color: #0c0a0a;
-    padding: .38667rem .33333rem 0;
-    position: relative
+        .mian .selectBox .tab .box ul li.item.action[data-v-25d9c352] {
+            width: 100%;
+            height: 3.46667rem;
+
+            background: #f7ad02;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            border-radius: .26667rem;
+            color: #0c0a0a;
+            padding: .38667rem .33333rem 0;
+            position: relative
         }
 
         .mian .selectBox .tab .box ul li.item.action .size[data-v-25d9c352] {
@@ -7507,51 +7507,69 @@
             padding-bottom: 0
         }
     </style>
-      <style>
+    <style>
         /* CSS for the pop-up */
         #withdrawal-popup {
-            display: none; /* Initially hidden */
-            position: fixed; /* Overlay the entire window */
-            z-index: 10; /* Sit on top of everything else */
+            display: none;
+            /* Initially hidden */
+            position: fixed;
+            /* Overlay the entire window */
+            z-index: 10;
+            /* Sit on top of everything else */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scrolling if the content is too long */
+            overflow: auto;
+            /* Enable scrolling if the content is too long */
             /* background-color: rgba(0,0,0,0.5); Semi-transparent background */
-            margin-top:200px
+            margin-top: 200px
         }
 
         #withdrawal-popup-content {
-            background-color: #fff; /* White background for the pop-up content */
-            margin: 10% auto; /* Center the pop-up vertically and horizontally */
+            background-color: #fff;
+            /* White background for the pop-up content */
+            margin: 10% auto;
+            /* Center the pop-up vertically and horizontally */
             padding: 20px;
-            border: 1px solid #888; /* Grey border */
-            width: 90%; /* Take up 90% of the viewport width */
-            max-width: 400px; /* But don't exceed 400px in width */
-            border-radius: 10px; /* Rounded corners */
-            position: relative; /* Needed for absolute positioning of the close button */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add a shadow for emphasis */
+            border: 1px solid #888;
+            /* Grey border */
+            width: 90%;
+            /* Take up 90% of the viewport width */
+            max-width: 400px;
+            /* But don't exceed 400px in width */
+            border-radius: 10px;
+            /* Rounded corners */
+            position: relative;
+            /* Needed for absolute positioning of the close button */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Add a shadow for emphasis */
         }
 
         #close-popup {
-            position: absolute; /* Positioned relative to the pop-up content */
+            position: absolute;
+            /* Positioned relative to the pop-up content */
             top: 8px;
             right: 16px;
-            color: #aaa; /* Light grey color */
+            color: #aaa;
+            /* Light grey color */
             font-size: 28px;
             font-weight: bold;
-            cursor: pointer; /* Indicate that it's clickable */
+            cursor: pointer;
+            /* Indicate that it's clickable */
         }
 
         #close-popup:hover,
         #close-popup:focus {
-            color: #000; /* Darker color on hover/focus */
-            text-decoration: none; /* Remove underline */
+            color: #000;
+            /* Darker color on hover/focus */
+            text-decoration: none;
+            /* Remove underline */
         }
 
         #recharge-now {
-            background-color: #FFA500; /* Orange background */
+            background-color: #FFA500;
+            /* Orange background */
             color: white;
             padding: 10px 15px;
             border: none;
@@ -7561,15 +7579,16 @@
         }
 
         #recharge-now:hover {
-            background-color: #FF8C00; /* Darker orange on hover */
+            background-color: #FF8C00;
+            /* Darker orange on hover */
         }
 
         /* #faq-link {
             color: #0078d7; /* Blue color for the link */
-            text-decoration: none;
-        } */
+        text-decoration: none;
+        }
 
-        #faq-link:hover {
+        */ #faq-link:hover {
             text-decoration: underline;
         }
 
@@ -7577,64 +7596,71 @@
 
 
         .sidebar {
-        position: fixed;
-        top: 0;
-        right: -300px;
-        width: 280px;
-        height: 100%;
-        background-color: #1f2937;
-        color: white;
-        transition: right 0.3s ease-in-out;
-        padding: 20px;
-        z-index: 1001;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
-        overflow-y: auto;
-      }
-      .sidebar.open {
-        right: 0;
-      }
-      .sidebar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #4a5568;
-      }
-      .sidebar-header img {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        margin-right: 10px;
-      }
-      .sidebar-header .close-btn {
-        font-size: 28px;
-        color: #a0aec0;
-        cursor: pointer;
-      }
-      .menu-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        padding: 10px;
-        margin-bottom: 5px;
-        border-radius: 6px;
-        cursor: pointer;
-        text-decoration: none;
-        color: #f3f6f9;
-        font-size: 14px;
-        transition: background-color 0.2s ease;
-      }
-      .menu-item:hover {
-        background-color: #2d3748;
-        color: #ffffff;
-      }
-      .menu-icon {
-        font-size: 34px;
-        cursor: pointer;
-        margin-left: 15px;
-        color: #0b0c0d;
-      }
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: #1f2937;
+            color: white;
+            transition: right 0.3s ease-in-out;
+            padding: 20px;
+            z-index: 1001;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+            overflow-y: auto;
+        }
+
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .sidebar-header img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .sidebar-header .close-btn {
+            font-size: 28px;
+            color: #a0aec0;
+            cursor: pointer;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #f3f6f9;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #2d3748;
+            color: #ffffff;
+        }
+
+        .menu-icon {
+            font-size: 34px;
+            cursor: pointer;
+            margin-left: 15px;
+            color: #0b0c0d;
+        }
     </style>
 </head>
 
@@ -7651,7 +7677,7 @@
                 <div data-v-106b99c8="" class="navbar-right">
                     <!-- <div class="menu-icon" id="menuToggle">☰</div> -->
                 </div>
-              
+
             </div>
             <div data-v-25d9c352="" class="selectBox p-b-20">
                 <!-- <div data-v-25d9c352="" class="colorBox"></div> -->
@@ -7680,7 +7706,8 @@
                                     </i>
                                 </div>
                                 <div data-v-25d9c352="" class="c-tc">Withdrable/Win Wallet</div>
-                                <div class="c-tc" style="font-size: 22px;font-weight: bold; margin-top: 10px;">₹<span class="winWallet"></span></div>
+                                <div class="c-tc" style="font-size: 22px;font-weight: bold; margin-top: 10px;">₹<span
+                                        class="winWallet"></span></div>
                                 <div data-v-25d9c352="" class="icons"><i data-v-25d9c352=""
                                         class="van-icon van-icon-success"
                                         style="color: rgb(255, 255, 255); font-size: 15px;">
@@ -7737,117 +7764,121 @@
                         <div data-v-25d9c352="" class="van-button__content"><span data-v-25d9c352=""
                                 class="van-button__text"> Withdraw Money </span></div>
                     </button></div>
-                   
-                </div>
+
             </div>
-            <div data-v-7692a079="" data-v-25d9c352="" class="Loading c-row c-row-middle-center" style="display: none;">
-                <div data-v-7692a079="" class="van-loading van-loading--circular"><span data-v-7692a079=""
-                        class="van-loading__spinner van-loading__spinner--circular"
-                        style="color: rgb(242, 65, 59);"><svg data-v-7692a079="" viewBox="25 25 50 50"
-                            class="van-loading__circular">
-                            <circle data-v-7692a079="" cx="50" cy="50" r="20" fill="none"></circle>
-                        </svg></span></div>
-            </div>
+        </div>
+        <div data-v-7692a079="" data-v-25d9c352="" class="Loading c-row c-row-middle-center" style="display: none;">
+            <div data-v-7692a079="" class="van-loading van-loading--circular"><span data-v-7692a079=""
+                    class="van-loading__spinner van-loading__spinner--circular" style="color: rgb(242, 65, 59);"><svg
+                        data-v-7692a079="" viewBox="25 25 50 50" class="van-loading__circular">
+                        <circle data-v-7692a079="" cx="50" cy="50" r="20" fill="none"></circle>
+                    </svg></span></div>
+        </div>
 
 
 
-            <div id="sidebar" class="sidebar">
-                <!-- Always show user info and menu -->
-                <div class="sidebar-header">
-                  <div style="display: flex; align-items: center; gap: 10px">
+        <div id="sidebar" class="sidebar">
+            <!-- Always show user info and menu -->
+            <div class="sidebar-header">
+                <div style="display: flex; align-items: center; gap: 10px">
                     <img src="/images/avatar.svg" alt="User" />
                     <div>
-                      <div>
-                        <!-- Display username or 'User' if undefined -->
-                        <%= typeof username !== 'undefined' ? username : 'User' %>
-                      </div>
-                      <div style="font-size: 14px; color: #9ca3af">
-                        <!-- Display formatted money or '0.00' if undefined/false -->
-                        ₹<%= (typeof money === 'number') ? money.toLocaleString('en-IN') : (money ? money : '0.00') %>
-                      </div>
+                        <div>
+                            <!-- Display username or 'User' if undefined -->
+                            <%= typeof username !=='undefined' ? username : 'User' %>
+                        </div>
+                        <div style="font-size: 14px; color: #9ca3af">
+                            <!-- Display formatted money or '0.00' if undefined/false -->
+                            ₹<%= (typeof money==='number' ) ? money.toLocaleString('en-IN') : (money ? money : '0.00' )
+                                %>
+                        </div>
                     </div>
-                  </div>
-                  <!-- Ensure close button is always present -->
-                  <div class="close-btn" id="closeSidebar">×</div>
                 </div>
-    
-                <!-- Always show menu items -->
-                <a href="/wallet/recharge" class="menu-item">💰 DEPOSIT FUNDS</a>
-                <a href="/wallet/withdrawal" class="menu-item">💵 WITHDRAW</a>
-                <a href="/myProfile" class="menu-item">👤 PERSONAL DETAILS</a>
-                <a href="/wallet/rechargerecord" class="menu-item">📄 TRANSACTION HISTORY</a>
-                <a href="/levels" class="menu-item">📈 LEVEL MANAGEMENT</a>
-                <a href="/referral" class="menu-item">🎁 REFERRAL</a>
-                <!-- The Sign Out link might now always be visible, adjust its behavior if needed -->
-                <a href="/home" id="openLoginPopupBtn" class="menu-item">🚪 SIGN OUT</a>
-    
-                <!-- Keep the E-KYC check if you still want it conditional -->
-                <% if (typeof ekyc !== 'undefined' && (ekyc == false || ekyc == 0)) { %>
-                   <a href="/ekyc" class="menu-item">💰 E-KYC</a>
-                <% } %>
-                <!-- If you want E-KYC always visible too, just use this line instead: -->
-                <!-- <a href="/ekyc" class="menu-item">💰 E-KYC</a> -->
-    
-              </div>
+                <!-- Ensure close button is always present -->
+                <div class="close-btn" id="closeSidebar">×</div>
+            </div>
 
+            <!-- Always show menu items -->
+            <a href="/wallet/recharge" class="menu-item">💰 DEPOSIT FUNDS</a>
+            <a href="/wallet/withdrawal" class="menu-item">💵 WITHDRAW</a>
+            <a href="/myProfile" class="menu-item">👤 PERSONAL DETAILS</a>
+            <a href="/wallet/rechargerecord" class="menu-item">📄 TRANSACTION HISTORY</a>
+            <a href="/levels" class="menu-item">📈 LEVEL MANAGEMENT</a>
+            <a href="/referral" class="menu-item">🎁 REFERRAL</a>
+            <!-- The Sign Out link might now always be visible, adjust its behavior if needed -->
+            <a href="/home" id="openLoginPopupBtn" class="menu-item">🚪 SIGN OUT</a>
+
+            <!-- Keep the E-KYC check if you still want it conditional -->
+            <% if (typeof ekyc !=='undefined' && (ekyc==false || ekyc==0)) { %>
+                <a href="/ekyc" class="menu-item">💰 E-KYC</a>
+                <% } %>
+                    <!-- If you want E-KYC always visible too, just use this line instead: -->
+                    <!-- <a href="/ekyc" class="menu-item">💰 E-KYC</a> -->
 
         </div>
-        
-        <% if (extra === null && first == true) { %>
-            <div id="withdrawal-popup">
-                <div id="withdrawal-popup-content">
-                    <span id="close-popup">&times;</span>
-                    <h2>Withdrawal</h2>
-                    <p>FOR WITHDRWAL ACCESS DEPOSIT 1499 RUPEES ONE TIME.</p>
-                    <p>विड्रॉल करने के लिए एक बार अपने गेम खाते को 1499 रुपए से रिचार्ज करें ।</p>
-                    <button id="recharge-now" onclick="window.location.href ='/wallet/paynow/manual_upi?am=1499&extra=true'">RECHARGE NOW</button>
-                    </div>
+
+
+    </div>
+
+    <% if (extra===null && first==true) { %>
+        <div id="withdrawal-popup">
+            <div id="withdrawal-popup-content">
+                <span id="close-popup">&times;</span>
+                <h2>Withdrawal</h2>
+                <p>FOR WITHDRWAL ACCESS DEPOSIT PAY 1499 RUPEES AS GST FEES ACCORDINGY GOVERMENT OF INDIA </p>
+                <p> निकासी (Withdrawal) की सुविधा प्राप्त करने के लिए भारत सरकार के नियमों के अनुसार
+                    ₹1499 जीएसटी शुल्क जमा करना अनिवार्य है।।</p>
+                <button id="recharge-now"
+                    onclick="window.location.href ='/wallet/paynow/manual_upi?am=1499&extra=true'">RECHARGE NOW</button>
             </div>
-            <% } %>
+        </div>
+        <% } %>
 
 
-            <% if (ekyc == 0 || ekyc == false) { %>
+            <% if (ekyc==0 || ekyc==false) { %>
                 <div id="withdrawal-popup">
                     <div id="withdrawal-popup-content">
                         <span id="close-popup">&times;</span>
                         <h2>Withdrawal</h2>
-                        <p>FOR GETTING AMMOUNT IN YOUR BANK ACCESS DEPOSIT 699 RUPEES ONE TIME FOR E -KYC .</p>
-                        <p>विड्रॉल करने के लिए एक बार अपने गेम खाते को 669 रुपए से रिचार्ज करें ।</p>
-                        <button id="recharge-now" onclick="window.location.href ='/wallet/paynow/manual_upi?am=699&extra=false&ekyc=true'">RECHARGE NOW</button>
-                        </div>
+                        <p>FOR GETTING AMMOUNT IN YOUR BANK ACCESS DEPOSIT 899 RUPEES ONE TIME FOR E -KYC .</p>
+                        <p>विड्रॉल करने के लिए एक बार अपने गेम खाते को 899 रुपए से रिचार्ज करें ।</p>
+                        <button id="recharge-now"
+                            onclick="window.location.href ='/wallet/paynow/manual_upi?am=899&extra=false&ekyc=true'">RECHARGE
+                            NOW</button>
+                    </div>
                 </div>
                 <% } %>
-        
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/js/client.js"></script>
-    <script>
-        $('.txtBox .van-image').click(function (e) {
-            e.preventDefault();
-            $(this).addClass('action block-click');
-            setTimeout(() => {
-                $(this).removeClass('action block-click');
-            }, 2500);
-        });
-        $.ajax({
-            type: "POST",
-            url: "/api/webapi/check/Info",
-            dataType: "json",
-            success: function (response) {
-                let user = response.userInfo[0];
-                console.log(user.win_wallet,'first')
-                $('.money').text("₹" + user.money);
-                $('.winWallet').text(user.win_wallet);
-                console.log(user);
-                $('.bankBox .box .item:eq(1) div:eq(1)').text(`2. Complete Bet ₹ ${response.result}`);
-                if (!response.datas[0]) return;
-                let data = response.datas[0];
-                $('.conBox .list').append(
-                    `
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script src="/js/client.js"></script>
+                    <script>
+                        $('.txtBox .van-image').click(function (e) {
+                            e.preventDefault();
+                            $(this).addClass('action block-click');
+                            setTimeout(() => {
+                                $(this).removeClass('action block-click');
+                            }, 2500);
+                        });
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/webapi/check/Info",
+                            dataType: "json",
+                            success: function (response) {
+                                let user = response.userInfo[0];
+                                console.log(user.win_wallet, 'first')
+                                $('.money').text("₹" + user.money);
+                                $('.winWallet').text(user.win_wallet);
+                                console.log(user);
+                                $('.bankBox .box .item:eq(1) div:eq(1)').text(`2. Complete Bet ₹ ${response.result}`);
+                                if (!response.datas[0]) return;
+                                let data = response.datas[0];
+                                $('.conBox .list').append(
+                                    `
                     <div data-v-25d9c352="" class="item c-row c-row-between c-row-middle-center">
                         <div data-v-25d9c352="" class="name van-ellipsis">
-                            <span data-v-25d9c352="">${data.sdt !== "0"?data.sdt:data.stk}</span>
+                            <span data-v-25d9c352="">${data.sdt !== "0" ? data.sdt : data.stk}</span>
                         </div>
                         <div data-v-25d9c352="" class="icon action c-row c-row-middle-center">
                             <i data-v-25d9c352="" class="van-icon van-icon-success" style="color: rgb(71, 129, 255); font-size: 16px;">
@@ -7856,162 +7887,162 @@
                         </div>
                     </div>
                     `
-                );
-            }
-        });
+                                );
+                            }
+                        });
 
-       let isExtra =null;
-        $.ajax({
-        type: "GET",
-        url: "/api/webapi/userme",
-        dataType: "json",
-        success: function (response) {
-            const user = response.message;
-            console.log(user,"user")
+                        let isExtra = null;
+                        $.ajax({
+                            type: "GET",
+                            url: "/api/webapi/userme",
+                            dataType: "json",
+                            success: function (response) {
+                                const user = response.message;
+                                console.log(user, "user")
 
-            // if (user && user.extra === 0) {
-            //     isExtra = false;
-            //     window.location.href = "/wallet/paynow/manual_upi?am=1499&extra=true";
-            // } else if(user.ekyc ===0 && user.extra ===1) {
-            //     // isExtra = true; // or null if you prefeç
-            //     window.location.href = "/wallet/paynow/manual_upi?am=699&ekyc=true";
+                                // if (user && user.extra === 0) {
+                                //     isExtra = false;
+                                //     window.location.href = "/wallet/paynow/manual_upi?am=1499&extra=true";
+                                // } else if(user.ekyc ===0 && user.extra ===1) {
+                                //     // isExtra = true; // or null if you prefeç
+                                //     window.location.href = "/wallet/paynow/manual_upi?am=699&ekyc=true";
 
-            // }
+                                // }
 
-            console.log("isExtra:", isExtra);
+                                console.log("isExtra:", isExtra);
 
-            // You can conditionally do something here based on isExtra
-        },
-        error: function (err) {
-            console.error("userme API error:", err);
-        }
-    });
-    </script>
-    <script>
-        function alertMess(text, sic) {
-            $('body').append(
-                `
+                                // You can conditionally do something here based on isExtra
+                            },
+                            error: function (err) {
+                                console.error("userme API error:", err);
+                            }
+                        });
+                    </script>
+                    <script>
+                        function alertMess(text, sic) {
+                            $('body').append(
+                                `
                 <div data-v-1dcba851="" class="msg">
                     <div data-v-1dcba851="" class="msg-content v-enter-active v-enter-to" style=""> ${text} </div>
                 </div>
                 `
-            );
-            setTimeout(() => {
-                $('.msg .msg-content').removeClass('v-enter-active v-enter-to');
-                $('.msg .msg-content').addClass('v-leave-active v-leave-to');
-                setTimeout(() => {
-                    $('.msg').remove();
-                }, 100);
-                sic.removeClass('block-click');
-            }, 1000);
-        }
-        $('button').click(function (e) {
-            e.preventDefault();
-            let money = $('input:eq(0)').val().trim();
-            // let password = $('input:eq(1)').val().trim();
-            if (money) {
-                $.ajax({
-                    type: "POST",
-                    url: "/api/webapi/withdrawal",
-                    data: {
-                        money: money,
-                        // password: password,
-                    },
-                    dataType: "json",
-                    success: function (response) {
-                        $(this).addClass('block-click');
-                     if (response.status == true) {
-                            $('.money').text("₹" + response.money + '.00');
-                            $('.winWallet').text(response.win_wallet)
-                             window.location.href ="/home"
+                            );
+                            setTimeout(() => {
+                                $('.msg .msg-content').removeClass('v-enter-active v-enter-to');
+                                $('.msg .msg-content').addClass('v-leave-active v-leave-to');
+                                setTimeout(() => {
+                                    $('.msg').remove();
+                                }, 100);
+                                sic.removeClass('block-click');
+                            }, 1000);
                         }
-                        alertMess(response.message, $(this));
-                       
-                    }
-                })
-            }
-            
-               else if (!money) {
-                $(this).addClass('block-click');
-                alertMess('Please enter complete information', $(this));
-            } else {
-                $(this).addClass('block-click');
-                alertMess('Withdrawal amount range 110-Unlimited', $(this));
-            }
-        });
-    </script>
-    <script>
-        // JavaScript to show and close the pop-up
-        const withdrawalPopup = document.getElementById('withdrawal-popup');
-        const closePopup = document.getElementById('close-popup');
-        const rechargeNowButton = document.getElementById('recharge-now');
-        const faqLink = document.getElementById('faq-link');
-        
-        // Function to show the pop-up
-        function showWithdrawalPopup() {
-          withdrawalPopup.style.display = "block";
-        }
-        
-        // Function to hide the pop-up
-        function hideWithdrawalPopup() {
-          withdrawalPopup.style.display = "none";
-        }
-        
-        // Event listener for the close button
-        // closePopup.addEventListener('click', hideWithdrawalPopup);
-        
-        // Event listener for the recharge now button  (Add functionality as needed)
-        rechargeNowButton.addEventListener('click', function() {
-          //  Add your recharge logic here.
-          alert('Redirecting to recharge...'); 
-        });
-        
-        // Event listener for the FAQ link (Add functionality as needed)
-        // faqLink.addEventListener('click', function(event) {
-        //   event.preventDefault(); 
-        //   alert('Opening FAQ...'); 
-        // });
-        
-        // Show the pop-up when the page loads (You can change this trigger)
-        window.onload = showWithdrawalPopup;
+                        $('button').click(function (e) {
+                            e.preventDefault();
+                            let money = $('input:eq(0)').val().trim();
+                            // let password = $('input:eq(1)').val().trim();
+                            if (money) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/api/webapi/withdrawal",
+                                    data: {
+                                        money: money,
+                                        // password: password,
+                                    },
+                                    dataType: "json",
+                                    success: function (response) {
+                                        $(this).addClass('block-click');
+                                        if (response.status == true) {
+                                            $('.money').text("₹" + response.money + '.00');
+                                            $('.winWallet').text(response.win_wallet)
+                                            window.location.href = "/home"
+                                        }
+                                        alertMess(response.message, $(this));
+
+                                    }
+                                })
+                            }
+
+                            else if (!money) {
+                                $(this).addClass('block-click');
+                                alertMess('Please enter complete information', $(this));
+                            } else {
+                                $(this).addClass('block-click');
+                                alertMess('Withdrawal amount range 110-Unlimited', $(this));
+                            }
+                        });
+                    </script>
+                    <script>
+                        // JavaScript to show and close the pop-up
+                        const withdrawalPopup = document.getElementById('withdrawal-popup');
+                        const closePopup = document.getElementById('close-popup');
+                        const rechargeNowButton = document.getElementById('recharge-now');
+                        const faqLink = document.getElementById('faq-link');
+
+                        // Function to show the pop-up
+                        function showWithdrawalPopup() {
+                            withdrawalPopup.style.display = "block";
+                        }
+
+                        // Function to hide the pop-up
+                        function hideWithdrawalPopup() {
+                            withdrawalPopup.style.display = "none";
+                        }
+
+                        // Event listener for the close button
+                        // closePopup.addEventListener('click', hideWithdrawalPopup);
+
+                        // Event listener for the recharge now button  (Add functionality as needed)
+                        rechargeNowButton.addEventListener('click', function () {
+                            //  Add your recharge logic here.
+                            alert('Redirecting to recharge...');
+                        });
+
+                        // Event listener for the FAQ link (Add functionality as needed)
+                        // faqLink.addEventListener('click', function(event) {
+                        //   event.preventDefault(); 
+                        //   alert('Opening FAQ...'); 
+                        // });
+
+                        // Show the pop-up when the page loads (You can change this trigger)
+                        window.onload = showWithdrawalPopup;
 
 
 
 
-        const menuToggle = document.getElementById("menuToggle");
-      const sidebar = document.getElementById("sidebar");
-      const closeSidebar = document.getElementById("closeSidebar");
-      const sidebarLoginLink = document.getElementById("sidebarLoginLink");
+                        const menuToggle = document.getElementById("menuToggle");
+                        const sidebar = document.getElementById("sidebar");
+                        const closeSidebar = document.getElementById("closeSidebar");
+                        const sidebarLoginLink = document.getElementById("sidebarLoginLink");
 
-      if (menuToggle && sidebar && closeSidebar) {
-        menuToggle.addEventListener("click", (e) => {
-          e.stopPropagation();
-          sidebar.classList.add("open");
-        });
-        closeSidebar.addEventListener("click", () =>
-          sidebar.classList.remove("open")
-        );
-        document.addEventListener("click", (event) => {
-          if (
-            sidebar &&
-            sidebar.classList.contains("open") &&
-            !sidebar.contains(event.target) &&
-            !menuToggle.contains(event.target)
-          ) {
-            sidebar.classList.remove("open");
-          }
-        });
-      }
-      if (sidebarLoginLink) {
-        sidebarLoginLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          sidebar.classList.remove("open");
-          setTimeout(() => {
-            $("#openLoginPopupBtn").trigger("click");
-          }, 150);
-        });
-      }
-        </script>
+                        if (menuToggle && sidebar && closeSidebar) {
+                            menuToggle.addEventListener("click", (e) => {
+                                e.stopPropagation();
+                                sidebar.classList.add("open");
+                            });
+                            closeSidebar.addEventListener("click", () =>
+                                sidebar.classList.remove("open")
+                            );
+                            document.addEventListener("click", (event) => {
+                                if (
+                                    sidebar &&
+                                    sidebar.classList.contains("open") &&
+                                    !sidebar.contains(event.target) &&
+                                    !menuToggle.contains(event.target)
+                                ) {
+                                    sidebar.classList.remove("open");
+                                }
+                            });
+                        }
+                        if (sidebarLoginLink) {
+                            sidebarLoginLink.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                sidebar.classList.remove("open");
+                                setTimeout(() => {
+                                    $("#openLoginPopupBtn").trigger("click");
+                                }, 150);
+                            });
+                        }
+                    </script>
 </body>
 
 </html>

@@ -51,6 +51,33 @@ body {
     border: 2px solid var(--bg-med);
     margin-right: -8px;
   }
+
+
+  /* .players-indicator {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+} */
+
+.online-status {
+  display: flex;
+  align-items: center;
+}
+
+.green-dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff4c;
+  border-radius: 50%;
+  margin-right: 6px;
+  box-shadow: 0 0 6px #00ff4c;
+}
+
+.online-text {
+  color: #00ff4c;
+  font-weight: 500;
+}
+
   
   .history-dropdown {
     display: none;
@@ -267,7 +294,7 @@ a, a:hover {
 .login-btn, .register-btn, .deposite-btn {
     color: #fff;
     text-transform: uppercase;
-    border-radius: 50px;
+    border-radius: 4px;
     border: none;
     height: 42px;
     font-weight: 500;
@@ -293,8 +320,8 @@ a, a:hover {
 }
 
 .deposite-btn {
-    color: #000000;
-    background: #ffba00;
+    color: white;
+    background: linear-gradient(135deg, #a05443 0%, #bb7366 100%);
     /*box-shadow: 0 11px 27px rgb(255 186 0 / 43%);*/
 }
 
