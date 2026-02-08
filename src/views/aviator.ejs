@@ -1482,21 +1482,35 @@
 
         <script>
             let count = 491;
-            const min = 450;   // isse niche nahi jaayega
-            const max = 1200;  // isse upar nahi jaayega
+            const min = 450;
+            const max = 1500;
 
             setInterval(() => {
-                const change = Math.floor(Math.random() * 5) - 2;
-                // -2, -1, 0, +1, +2
+                let change = 0;
+
+                if (count < 1400) {
+                    // 🔼 growth phase (mostly increase)
+                    change = Math.floor(Math.random() * 15) + 1; // +1 to +15
+                }
+                else if (count < max) {
+                    // 🐢 slow growth near 1500
+                    change = Math.floor(Math.random() * 5); // 0 to +4
+                }
+                else {
+                    // 🔁 stabilize around 1500
+                    change = Math.floor(Math.random() * 7) - 3; // -3 to +3
+                }
 
                 count += change;
 
+                // safety limits
                 if (count < min) count = min;
                 if (count > max) count = max;
 
                 document.getElementById("playersCount").innerText = count;
             }, 1000);
         </script>
+
 
 
 </body>
