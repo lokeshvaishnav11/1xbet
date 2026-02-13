@@ -301,7 +301,7 @@ const addBondPayPaymentRequest = async (req, res) => {
             api_key: BONDPAY_API_KEY,
             amount: amount.toFixed(2),
             merchant_order_no: merchantOrderNo,
-            callback_url: "https//1xbet99.vip/callback/bondpay",
+            callback_url: "https://1xbet99.vip/callback/bondpay",
             extra: 0
         };
 
