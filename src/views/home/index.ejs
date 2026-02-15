@@ -1107,18 +1107,8 @@ referrerpolicy="no-referrer"
             </div>
 
 <div style="justify-content: center; display: flex; margin-top: 20px;">
-<div class="aviator-card" onclick="window.location.href='/aviator'">
-
+<div class="aviator-card" id="aviatorCard">
   <img src="/images/icons/aviator.gif" alt="Aviator">
-
-  <div class="play-overlay">
-      <div class="play-btn">
-          ▶
-      </div>
-  </div>
-
-  <div class="game-title">Aviator</div>
-
 </div>
 </div>
 
@@ -1292,7 +1282,7 @@ referrerpolicy="no-referrer"
       </section>
       
 
-      <nav class="floating-nav" style="<%= money === false ? 'bottom:0px;' : 'bottom:30px;' %>">
+      <!-- <nav class="floating-nav" style="<%= money === false ? 'bottom:0px;' : 'bottom: 0px;' %>">
         <a href="#" class="nav-item">
           <i class="bi bi-trophy"></i>
           <span>Sports</span>
@@ -1321,8 +1311,46 @@ referrerpolicy="no-referrer"
           <i class="bi bi-list"></i>
           <span>Menu</span>
         </a>
-      </nav>
+      </nav> -->
       
+
+
+    <nav class="floating-nav" style="bottom:0px">
+
+  <a href="/sports" class="nav-item auth-check">
+    <i class="bi bi-trophy"></i>
+    <span>Sports</span>
+  </a>
+
+  <a href="/casino" class="nav-item auth-check">
+    <i class="bi bi-dice-5"></i>
+    <span>Casino</span>
+  </a>
+
+  <a href="/wallet/recharge" class="nav-item auth-check">
+    <div class="center-circle">
+      <i class="bi bi-ticket-perforated"></i>
+    </div>
+    <span>Wallet</span>
+  </a>
+
+  <a href="/aviator" class="nav-item auth-check">
+    <i class="bi bi-person"></i>
+    <% if (money === false) { %>
+      <span>Log in</span>
+    <% } else { %>
+      <span>Play</span>
+    <% } %>
+  </a>
+
+  <a href="/wallet/withdrawal" class="nav-item auth-check">
+    <i class="bi bi-list"></i>
+    <span>Menu</span>
+  </a>
+
+</nav>
+
+
 
 <!-- 
     <img
@@ -2478,5 +2506,84 @@ referrerpolicy="no-referrer"
     
     });
     </script>
+
+    <!-- <script>
+  var money = <%= money %>
+
+  document.querySelectorAll(".auth-check").forEach(link => {
+    link.addEventListener("click", function (e) {
+      if (money === false) {
+        e.preventDefault();
+        alert("Please login first");
+      }
+    });
+  });
+</script> -->
+
+<script>
+  const money = <%= money %>;
+
+  document.querySelectorAll(".auth-check").forEach(link => {
+    link.addEventListener("click", function (e) {
+      if (money === false) {
+        e.preventDefault();
+
+        const loginBtn = document.getElementById("openLoginPopupBtn");
+        if (loginBtn) {
+          loginBtn.click();   // 🔥 popup open
+        } else {
+          alert("Please login first");
+        }
+      }
+    });
+  });
+</script>
+
+
+<script>
+  let money = <%= money %>;
+
+  document.getElementById("playAviatorBtn")?.addEventListener("click", function () {
+    if (money === false) {
+      const loginBtn = document.getElementById("openLoginPopupBtn");
+      if (loginBtn) {
+        loginBtn.click(); // 🔥 open login popup
+      } else {
+        alert("Please login first");
+      }
+    } else {
+      window.location.href = "/aviator";
+    }
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    var money = <%= money %>;
+    const aviatorCard = document.getElementById("aviatorCard");
+    const loginBtn = document.getElementById("openLoginPopupBtn");
+
+    if (!aviatorCard) return;
+
+    aviatorCard.addEventListener("click", function () {
+      if (money === false) {
+        // ❌ login nahi hai → popup open
+        if (loginBtn) {
+          loginBtn.click();
+        } else {
+          alert("Please login first");
+        }
+      } else {
+        // ✅ login hai → aviator
+        window.location.href = "/aviator";
+      }
+    });
+
+  });
+</script>
+
+
+
 
 </html>
