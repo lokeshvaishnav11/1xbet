@@ -22,11 +22,13 @@ const connection = mysql.createPool({
   database: 'gamedb'
 });
 
+// #1D4268
+
 // const connection = mysql.createPool({
 //     host: 'localhost',
 //     user: 'root',
 //     password: '',  // XAMPP's default root password is blank
-//     database: 'gameavitor',
+//     database: 'goagamesclub',
 //     port: 3306
 // });
 

@@ -4,7 +4,7 @@
     
     --color-bg: #0d0d0d;
     --color-surface: rgba(25, 20, 20, 0.8);
-    --color-accent-primary: #ea580c; /* Vibrant Mint Green */
+    --color-accent-primary: #ffffff; /* Vibrant Mint Green */
     --color-accent-secondary: #ea310c; /* Darker Green */
     --color-text-primary: #e0e0e0;
     --color-text-secondary: #888;
@@ -93,7 +93,7 @@ border-radius: 5px;
 transition: all 0.3s ease;
 text-decoration: none;
 border: 2px solid var(--color-accent-primary);
-background: transparent;
+background: #1D4268;
 color: var(--color-accent-primary);
 font-weight: 700;
 box-shadow: var(--glow-shadow-green);
@@ -677,7 +677,7 @@ margin-top: 10px;
 
     /* Unique Button Styles - Green Theme */
     .deposite-btn {
-        background: linear-gradient(135deg, #a05443 0%, #bb7366 100%);
+        background: linear-gradient(135deg, #1D4268 0%, #1D4268 100%);
         color: #ffffff; /* Changed to white for better contrast */
         border: 2px solid rgba(255, 255, 255, 0.3);
     }
@@ -749,3 +749,66 @@ margin-top: 10px;
             position: relative;
             z-index: 1;
         }
+
+          
+          .floating-nav {
+            position: fixed;
+            /* bottom: 15px; */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+            background: #ffffff;
+            /* border-radius: 25px; */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 9999;
+          }
+          
+          .nav-item {
+            text-decoration: none;
+            color: #4a6fa5;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s;
+          }
+          
+          .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+          }
+          
+          .nav-item:hover {
+            color: #007bff;
+            transform: translateY(-3px);
+          }
+          
+          /* Center Button */
+          .center-item {
+            position: relative;
+            margin-top: -35px;
+          }
+          
+          .center-circle {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(45deg, #4a90e2, #007bff);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            box-shadow: 0 8px 20px rgba(0,123,255,0.4);
+            transition: 0.3s;
+          }
+          
+          .center-circle:hover {
+            transform: scale(1.1);
+          }
+          

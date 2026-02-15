@@ -5,6 +5,7 @@ body {
     overflow: auto;
     /*background: rgb(221, 228, 236);*/
     background: #101011;
+    padding-bottom: 90px;
 }
 
 @font-face {

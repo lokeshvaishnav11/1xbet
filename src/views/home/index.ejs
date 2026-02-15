@@ -20,6 +20,9 @@ crossorigin="anonymous"
 referrerpolicy="no-referrer"
 />
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
 
     <!--====== Material Design Icons CSS ======-->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Oswald:wght@200;300;400&display=swap" rel="stylesheet"> -->
@@ -100,7 +103,7 @@ referrerpolicy="no-referrer"
         justify-content: space-between;
         align-items: center;
         padding: 10px 15px;
-        background-color: #1a202c;
+        background-color: #1D4268;
         position: sticky;
         top: 0;
         z-index: 900;
@@ -797,9 +800,196 @@ referrerpolicy="no-referrer"
       @media (max-width: 400px) {
         /* Keep existing */
       }
-    </style>
+   
+  .aviator-marquee {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #1D4268, #316928);
+    padding: 12px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scrollText 12s linear infinite;
+  }
+
+  .marquee-track span {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 50px;
+    white-space: nowrap;
+    letter-spacing: 2px;
+  }
+
+  @keyframes scrollText {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .gaming-footer {
+    /* background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
+    color: #fff;
+  }
+  
+  .section-title {
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .partner-card {
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  
+  .partner-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.15);
+  }
+  
+  .btn-gradient {
+    background: linear-gradient(45deg, #00c6ff, #1D4268);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  
+  .btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
+  }
+  
+  .social-circle {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  
+  .social-circle:hover {
+    background: #00c6ff;
+    transform: scale(1.1);
+  }
+  
+  .support-box {
+    background: linear-gradient(90deg, #00c6ff, #1D4268);
+    border-radius: 20px;
+  }
 
 
+  
+ 
+
+  .aviator-card {
+      position: relative;
+      width: 220px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #000;
+      transition: 0.4s ease;
+      box-shadow: 0 0 15px rgba(255,0,0,0.3);
+  }
+  
+  /* Glow Border Animation */
+  .aviator-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 22px;
+      background: linear-gradient(45deg, #ff0000, #ff7300, #ff0000);
+      z-index: -1;
+      animation: glowRotate 3s linear infinite;
+  }
+  
+  @keyframes glowRotate {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+  }
+  
+  .aviator-card img {
+      width: 100%;
+      display: block;
+      transition: 0.4s;
+  }
+  
+  /* Zoom Effect */
+  .aviator-card:hover img {
+      transform: scale(1.08);
+  }
+  
+  /* Overlay */
+  .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      transition: 0.4s;
+  }
+  
+  .aviator-card:hover .play-overlay {
+      opacity: 1;
+  }
+  
+  /* Animated Play Button */
+  .play-btn {
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle, #ff0000, #990000);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      color: #fff;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 20px rgba(255,0,0,0.8);
+  }
+  
+  @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+  }
+  
+  .game-title {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-weight: bold;
+      background: rgba(0,0,0,0.6);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      letter-spacing: 1px;
+  }
+  
+  </style>
+  
+  
 
 
 
@@ -835,12 +1025,18 @@ referrerpolicy="no-referrer"
             Login
           </button> -->
 
-          <button id="openRegisterPopupBtn" class="header-btn register-btn">
-            REGISTER
+          <button 
+          id="openRegisterPopupBtn" 
+          class="btn btn-sm  text-white fw-semibold rounded"
+          style="background-color:#8BC34A;">
+          REGISTRATION
         </button>
-
-          <button id="openLoginPopupBtn" class="header-btn login-btn">
-            LOGIN
+      
+        <button 
+          id="openLoginPopupBtn" 
+          class="btn btn-sm text-white fw-semibold rounded"
+          style="background-color:#2F6FA3;">
+          LOG IN
         </button>
 
           <!-- <button id="openRegisterPopupBtn" class="header-auth-btn" style="background-color: #ea580c; color: white">
@@ -857,8 +1053,18 @@ referrerpolicy="no-referrer"
     >
       CUSTOMER SUPPORT
     </div> -->
+<div  style="<%= money === false ? 'margin-top:0px;' : 'margin-top:60px;' %>">
+    <div class="aviator-marquee">
+      <div class="marquee-track">
+        <span>AVIATOR CRASH GAME</span>
+        <span>AVIATOR CRASH GAME</span>
+        <span>AVIATOR CRASH GAME</span>
+        <span>AVIATOR CRASH GAME</span>
+      </div>
+    </div>
+  </div>
 
-
+<div style="display: none;">
     <div
   class="slider-container"
   style="<%= money === false ? 'margin-top:0px;' : 'margin-top:60px;' %>"
@@ -877,11 +1083,52 @@ referrerpolicy="no-referrer"
   <!-- dots -->
   <div class="slider-dots"></div>
 </div>
+</div>
+
+<div style="margin-top: 20px;">
+  <h1 style="font-size:1.7rem; text-align: center;">Aviator Game</h1>
+  <p style="text-align: center;">Fly smart, cash out faster!</p>
+  <div class="cta-buttons">
+
+    <% if (money === false) { %>
+      <!-- <button class="play-now-btn" id="openLoginPopupBtnPlay">
+        Login to Play
+      </button> -->
+      <a  id="openLoginPopupBtnPlay" style="font-size:0.85rem">Login</a>
+      <a id="openRegisterPopupBtnBody" style="font-size:0.85rem">Register</a>
+      <% } else { %>
+      <!-- <button class="play-now-btn" onclick="window.location.href='/aviator'">
+        PLAY NOW
+      </button> -->
+      <a style="font-size:0.85rem" onclick="window.location.href='/aviator'">Play Now</a>
+      <a style="font-size:0.85rem" href="/logout">Logout</a>
+      <% } %></div>
+
+            </div>
+
+<div style="justify-content: center; display: flex; margin-top: 20px;">
+<div class="aviator-card" onclick="window.location.href='/aviator'">
+
+  <img src="/images/icons/aviator.gif" alt="Aviator">
+
+  <div class="play-overlay">
+      <div class="play-btn">
+          ▶
+      </div>
+  </div>
+
+  <div class="game-title">Aviator</div>
+
+</div>
+</div>
+
+
+
 
     
 
 
-    <div class="page-wrapper">
+    <div class="page-wrapper" style="display: none;">
 
   
 
@@ -965,9 +1212,117 @@ referrerpolicy="no-referrer"
       <footer class="site-footer ">
           <p>© 2026 1XBET AVIATOR. Please Play Responsibly.</p>
       </footer>
+
+
+
+     
+      
   
   </div>
 
+
+
+ <section class="gaming-footer py-5">
+        <div class="container">
+      
+          <!-- PARTNERS -->
+          <h3 class="section-title text-center mb-4">Our Esports Partners</h3>
+
+         
+      
+      <div class="row g-4 justify-content-center partners-grid">
+            <!-- <div class="col-6 col-md-3">
+              <div class="partner-card">PGL</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="partner-card">MBR</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="partner-card">NAVI</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="partner-card">ASTR</div>
+            </div> -->
+            <img src="https://jaguar-win.com/spribe.png" class="loader-logo" style="width: 230px;" alt="Logo">
+          </div> 
+      
+          <!-- DOWNLOAD SECTION -->
+          <div class="download-box text-center mt-5 p-4">
+            <h4 class="mb-4">Get Our Mobile App</h4>
+      
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+              <a href="#" class="btn btn-gradient px-4 py-3 rounded-pill">
+                <i class="bi bi-android"></i> Download for Android
+              </a>
+              <a href="#" class="btn btn-gradient px-4 py-3 rounded-pill">
+                <i class="bi bi-apple"></i> Download for iOS
+              </a>
+            </div>
+          </div>
+      
+          <!-- SOCIAL NETWORKS -->
+          <div class="text-center mt-5">
+            <h4 class="mb-4">Connect With Us</h4>
+      
+            <div class="social-icons d-flex justify-content-center gap-3">
+              <a href="#" class="social-circle"><i class="bi bi-whatsapp"></i></a>
+              <a href="#" class="social-circle"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-circle"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="social-circle"><i class="bi bi-telegram"></i></a>
+              <a href="#" class="social-circle"><i class="bi bi-youtube"></i></a>
+              <a href="#" class="social-circle"><i class="bi bi-twitter-x"></i></a>
+            </div>
+          </div>
+      
+          <!-- SUPPORT -->
+          <div class="support-box mt-5 p-4 d-flex align-items-center justify-content-between flex-column flex-md-row">
+            <div>
+              <h5 class="mb-1">24/7 Customer Support</h5>
+              <p class="mb-0">We’re here to answer all your questions anytime.</p>
+            </div>
+            <button class="btn btn-light rounded-pill mt-3 mt-md-0 px-4">Contact Now</button>
+          </div>
+      
+          <!-- FOOTER BOTTOM -->
+          <div class="text-center mt-5 small text-light opacity-75">
+            © 2026 1XBET. All Rights Reserved.
+          </div>
+      
+        </div>
+      </section>
+      
+
+      <nav class="floating-nav" style="<%= money === false ? 'bottom:0px;' : 'bottom:30px;' %>">
+        <a href="#" class="nav-item">
+          <i class="bi bi-trophy"></i>
+          <span>Sports</span>
+        </a>
+      
+        <a href="#" class="nav-item">
+          <i class="bi bi-dice-5"></i>
+          <span>Casino</span>
+        </a>
+      
+        <a href="/wallet/recharge" class="nav-item center-item">
+          <div class="center-circle">
+            <i class="bi bi-ticket-perforated"></i>
+          </div>
+          <span>Wallet</span>
+        </a>
+
+    
+      
+        <a href="/aviator" class="nav-item">
+          <i class="bi bi-person"></i>
+          <% if (money === false) { %> <span>Log in</span> <% } else { %><span>Play</span> <% } %>
+        </a>
+      
+        <a href="/wallet/withdrawal" class="nav-item">
+          <i class="bi bi-list"></i>
+          <span>Menu</span>
+        </a>
+      </nav>
+      
 
 <!-- 
     <img
