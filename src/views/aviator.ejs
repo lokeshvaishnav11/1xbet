@@ -1481,7 +1481,7 @@
             // },1000);
 
         </script>
-
+<!-- 
         <script>
             let count = 491;
             const min = 450;
@@ -1511,7 +1511,40 @@
 
                 document.getElementById("playersCount").innerText = count;
             }, 1000);
-        </script>
+        </script> -->
+
+
+        <script>
+    let count = 491;
+    const min = 450;
+    const max = 2000;
+
+    setInterval(() => {
+        let change = 0;
+
+        if (count < 1700) {
+            // 📈 growth phase (up & down both, but more up)
+            change = Math.floor(Math.random() * 31) - 10; // -10 to +20
+        } 
+        else if (count < max) {
+            // ⚖️ near 2000 (slow + zigzag)
+            change = Math.floor(Math.random() * 21) - 10; // -10 to +10
+        } 
+        else {
+            // 🔁 stabilize near 2000
+            change = Math.floor(Math.random() * 11) - 5; // -5 to +5
+        }
+
+        count += change;
+
+        // safety limits
+        if (count < min) count = min;
+        if (count > max) count = max;
+
+        document.getElementById("playersCount").innerText = count;
+    }, 1000);
+</script>
+
 
 
 
