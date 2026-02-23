@@ -24,19 +24,19 @@ const mysql = require('mysql2/promise');
 
 // #1D4268
 
-// const connection = mysql.createPool({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',  // XAMPP's default root password is blank
-//     database: 'gameavatior',
-//     port: 3306
-// });
-
 const connection = mysql.createPool({
-  host: 'localhost',
-  user: 'avaitorgame',        // same as MySQL user created
-  password: 'yourpassword',   // same password as above
-  database: 'gameavatior'
+    host: 'localhost',
+    user: 'root',
+    password: '',  // XAMPP's default root password is blank
+    database: 'gameavatior',
+    port: 3306
 });
+
+// const connection = mysql.createPool({
+//   host: 'localhost',
+//   user: 'avaitorgame',        // same as MySQL user created
+//   password: 'yourpassword',   // same password as above
+//   database: 'gameavatior'
+// });
 
 module.exports = connection;
