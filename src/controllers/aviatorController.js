@@ -340,42 +340,139 @@ const connection = require("../config/connectDB");
   };
 
 
-  const nextCrash = async (req, res) => {
+//   const nextCrash = async (req, res) => {
+//     try {
+//         const [result] = await connection.execute('SELECT aviator FROM admin');
+//         let adminValue = result[0]?.aviator;
+
+//         let crashValue;
+//         if (adminValue != 0) {
+//             console.log("Admin-defined crash value:", adminValue);
+//             crashValue = parseFloat(adminValue);
+//         } else {
+//             crashValue = parseFloat((Math.random() * 20).toFixed(2));
+//             console.log("Random crash value:", crashValue);
+//         }
+
+//         res.json(crashValue);
+//     } catch (error) {
+//         console.error("Error in nextCrash:", error);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+// };
+
+
+// const nextCrash = async (req, res) => {
+//     try {
+//         const now = new Date();
+
+//         // Current slot based on hours and minutes
+//         const hours = String(now.getHours()).padStart(2, '0');
+//         const minutes = String(now.getMinutes()).padStart(2, '0');
+//         const seconds = String(now.getSeconds()).padStart(2, '0');
+
+//         // Only first minute of slot is valid
+//         const slotTime = `${hours}:${minutes}:00`;
+
+//         // Check crash value for this exact minute
+//         const [rows] = await connection.execute(
+//             'SELECT crash_value FROM crash_predictions WHERE time_slot = ?',
+//             [slotTime]
+//         );
+
+//         let crashValue;
+//         if (rows.length && rows[0].crash_value != 0) {
+//             crashValue = parseFloat(rows[0].crash_value);
+//             console.log(`Crash value for ${slotTime}:`, crashValue);
+//         } else {
+//             crashValue = parseFloat((Math.random() * 20).toFixed(2));
+//             console.log(`Random crash value for ${slotTime}:`, crashValue);
+
+//             // Save to DB for only this exact minute
+//             await connection.execute(
+//                 'INSERT INTO crash_predictions (time_slot, crash_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE crash_value = ?',
+//                 [slotTime, crashValue, crashValue]
+//             );
+//         }
+
+//         res.json(crashValue);
+
+//         // Reset previous minute's value
+//         const prevDate = new Date(now.getTime() - 60000); // 1 minute ago
+//         const prevSlot = `${String(prevDate.getHours()).padStart(2, '0')}:${String(prevDate.getMinutes()).padStart(2, '0')}:00`;
+//         await connection.execute(
+//             'UPDATE crash_predictions SET crash_value = 0 WHERE time_slot = ?',
+//             [prevSlot]
+//         );
+
+//     } catch (error) {
+//         console.error("Error in nextCrash:", error);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+// };
+
+
+
+const nextCrash = async (req, res) => {
     try {
-        const [result] = await connection.execute('SELECT aviator FROM admin');
-        let adminValue = result[0]?.aviator;
+        const now = new Date();
+
+        // Get current hour and minute
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const slotTime = `${hours}:${minutes}`; // Current time in HH:MM format
+
+        console.log(slotTime,"Slot Time")
 
         let crashValue;
-        if (adminValue != 0) {
-            console.log("Admin-defined crash value:", adminValue);
-            crashValue = parseFloat(adminValue);
+
+        // Fetch the crash value for the current time slot
+        const [rows] = await connection.execute(
+            'SELECT crash_value FROM crash_predictions WHERE time_slot = ?',
+            [slotTime]
+        );
+
+        if (rows.length && rows[0].crash_value !== 0) {
+            // If crash value exists for the slot and is non-zero, use it
+            crashValue = parseFloat(rows[0].crash_value);
+            console.log(`Using existing crash value for ${slotTime}:`, crashValue);
         } else {
+            // Otherwise, generate a random crash value between 0 and 20
             crashValue = parseFloat((Math.random() * 20).toFixed(2));
-            console.log("Random crash value:", crashValue);
+            console.log(`Generated random crash value for ${slotTime}:`, crashValue);
+
+            // Insert or update the crash value for the current time slot in DB
+            await connection.execute(
+                `INSERT INTO crash_predictions (time_slot, crash_value) 
+                 VALUES (?, ?) 
+                 ON DUPLICATE KEY UPDATE crash_value = ?`,
+                [slotTime, crashValue, crashValue]
+            );
         }
 
-        res.json(crashValue);
+        res.json(crashValue); // Respond with the generated crash value
+
+        // Reset the crash value for the previous minute's slot
+        const prevDate = new Date(now.getTime() - 60000); // Subtract 1 minute
+        const prevHours = String(prevDate.getHours()).padStart(2, '0');
+        const prevMinutes = String(prevDate.getMinutes()).padStart(2, '0');
+        const prevSlot = `${prevHours}:${prevMinutes}`; // Previous time slot in HH:MM format
+
+        // Update the crash value of the previous slot to 0 in the DB
+        await connection.execute(
+            'UPDATE crash_predictions SET crash_value = 0 WHERE time_slot = ?',
+            [prevSlot]
+        );
+
     } catch (error) {
         console.error("Error in nextCrash:", error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
 
-    
 
-    // socket.on('cashout', (msg, callback) => {
-    //   if (!(betArray.length <= 5 && totalAmount <= 300 || betArray.length === 1) && amountToDistribute < parseInt(msg.bet_amount) * msg.crashOut) {
-    //     handleCrash(current_Value);
-    //     clearInterval(multiplierInterval);
-    //     callback({status:false})
-    //   } else {
-    //     pool = pool - parseInt(msg.bet_amount)*msg.crashOut;
-    //     updateBetStatus(msg);
-    //     io.emit('cashoutNew',parseInt(msg.bet_amount)*msg.crashOut)
-    //     callback(true);
-    //   }
-      
-    // });
+
+
  const cashout = async (req, res) => {
       const msg = req.body;
   
@@ -401,42 +498,6 @@ const connection = require("../config/connectDB");
       }
   };
 
-    // socket.on('getBetHistory',async (msg,callback)=>{
-    //   console.log(msg.phone,msg.period,"ghjkbhjkbvnmbm")
-    //   const [betHistory] = await connection.execute(
-    //     `SELECT ar.*, a.*, 
-    //             DATE_FORMAT(ar.time, '%Y-%m-%d %H:%i:%s') AS formatted_time
-    //      FROM aviator_result ar
-    //      JOIN aviator a ON ar.period = a.id
-    //      WHERE ar.phone = ? AND ar.period = ?
-    //      ORDER BY ar.period DESC`,  // Reverse order by period
-    //     [msg.phone,msg.period]
-    //   );
-    //   callback(betHistory);
-    // })
 
-  //   socket.on('betData', (callback) => { 
-
-  //     callback(betArray);
-  // });
-
-  // socket.on('crashNow',(callback)=>{
-  //    if(isFlying){
-  //     // handleCrash(current_Value);
-  //     io.emit("crashv1",{period:currentPeriod})
-  //     clearInterval(multiplierInterval);
-  //     callback(true)
-  //    }
-  //    else{
-  //       callback(false);
-  //    }
-  // })
-  
-
-    // socket.on('disconnect', () => {
-    //   console.log('A user disconnected');
-    // });
-  // });
-// };
 
 module.exports = { bet, cashout,nextCrash };

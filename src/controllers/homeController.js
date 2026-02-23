@@ -93,6 +93,61 @@ const bonusRecordPage = async (req, res) => {
     return res.render("promotion/bonusrecord.ejs");
 }
 
+
+
+//updarte pridiction 
+const updatepridction = async(req,res)=>{
+    try {
+        // Fetch all time slots and crash values
+        const [rows] = await connection.execute('SELECT time_slot, crash_value FROM crash_predictions');
+        
+        // Render EJS page with fetched data
+        res.render('home/admin_predictions', { slots: rows });
+    } catch (error) {
+        console.error("Error fetching predictions:", error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+const setpridiction = async (req, res) => {
+    try {
+        const slots = req.body.slots;  // Check the slots data
+        console.log('Slots:', slots);  // Log the slots object
+
+        // Check if slots is an object and not empty
+        if (typeof slots !== 'object' || Object.keys(slots).length === 0) {
+            return res.status(400).json({ error: 'No valid slots data received' });
+        }
+
+        // Loop through the slots and update them in the database
+        for (const timeSlot in slots) {
+            const crashValue = slots[timeSlot].crash_value;
+
+            if (crashValue === undefined) {
+                console.log(`Crash value missing for time slot ${timeSlot}`);
+                continue;  // Skip empty values if any
+            }
+
+            // Update the crash prediction in the database
+            await connection.execute(
+                'UPDATE crash_predictions SET crash_value = ? WHERE time_slot = ?',
+                [crashValue, timeSlot]
+            );
+        }
+
+        // Redirect after all updates are complete
+        res.redirect('/admin/predictions');
+        
+    } catch (error) {
+        console.error("Error updating prediction:", error);
+        
+        // Send a single response if an error occurs
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    }
+};
+
 const partnerRewardPage = async (req, res) => {
     try {
         const auth = req.cookies.auth;
@@ -721,5 +776,7 @@ module.exports = {
     teleth ,
     telefu  ,
     telefi,
-    telesi 
+    telesi ,
+    updatepridction,
+    setpridiction
 }

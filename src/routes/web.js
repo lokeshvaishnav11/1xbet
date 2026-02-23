@@ -15,6 +15,7 @@ const dragonController = require('../controllers/dragonController');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { home } = require('nodemon/lib/utils');
 
 let router = express.Router();
 
@@ -354,6 +355,10 @@ router.post('/admin/manager/settings/increaseWallet',adminController.middlewareA
    router.get("/activity/invitationBonus",middlewareController,homeController.invitationRewardPage)
    router.post('/invitationReward/claim',middlewareController,homeController.invitationRewardClaim);
    router.get("/activity/invitationBonusRules",middlewareController,homeController.invitationRewardRules)
+
+   router.get('/admin/predictions',homeController.updatepridction)
+
+   router.post('/admin/update-prediction',homeController.setpridiction)
 
 
    router.use('/aviator',middlewareController,homeController.gamePage);
