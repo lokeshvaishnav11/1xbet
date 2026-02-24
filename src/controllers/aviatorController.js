@@ -442,12 +442,12 @@ const nextCrash = async (req, res) => {
             console.log(`Generated random crash value for ${slotTime}:`, crashValue);
 
             // Insert or update the crash value for the current time slot in DB
-            await connection.execute(
-                `INSERT INTO crash_predictions (time_slot, crash_value) 
-                 VALUES (?, ?) 
-                 ON DUPLICATE KEY UPDATE crash_value = ?`,
-                [slotTime, crashValue, crashValue]
-            );
+            // await connection.execute(
+            //     `INSERT INTO crash_predictions (time_slot, crash_value) 
+            //      VALUES (?, ?) 
+            //      ON DUPLICATE KEY UPDATE crash_value = ?`,
+            //     [slotTime, crashValue, crashValue]
+            // );
         }
 
         res.json(crashValue); // Respond with the generated crash value
@@ -458,11 +458,11 @@ const nextCrash = async (req, res) => {
         const prevMinutes = String(prevDate.getMinutes()).padStart(2, '0');
         const prevSlot = `${prevHours}:${prevMinutes}`; // Previous time slot in HH:MM format
 
-        // Update the crash value of the previous slot to 0 in the DB
-        await connection.execute(
-            'UPDATE crash_predictions SET crash_value = 0 WHERE time_slot = ?',
-            [prevSlot]
-        );
+        // // Update the crash value of the previous slot to 0 in the DB
+        // await connection.execute(
+        //     'UPDATE crash_predictions SET crash_value = 0 WHERE time_slot = ?',
+        //     [prevSlot]
+        // );
 
     } catch (error) {
         console.error("Error in nextCrash:", error);
