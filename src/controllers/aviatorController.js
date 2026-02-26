@@ -438,7 +438,7 @@ const nextCrash = async (req, res) => {
             console.log(`Using existing crash value for ${slotTime}:`, crashValue);
         } else {
             // Otherwise, generate a random crash value between 0 and 20
-            crashValue = parseFloat((Math.random() * 8).toFixed(2));
+            crashValue = parseFloat((Math.random() * 16).toFixed(2));
             console.log(`Generated random crash value for ${slotTime}:`, crashValue);
 
             // Insert or update the crash value for the current time slot in DB
@@ -497,6 +497,7 @@ const nextCrash = async (req, res) => {
           return res.status(500).json({ status: false, error: 'Internal server error' });
       }
   };
+
 
 
 
