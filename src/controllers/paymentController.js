@@ -1324,7 +1324,7 @@ const watchPaysCallback = async (req, res) => {
 
     // 2. Fetch the recharge order from DB
     const [rows] = await connection.execute(
-      "SELECT * FROM recharge WHERE orderId = ?",
+      "SELECT * FROM recharge WHERE id_order = ?",
       [merchantOrder]
     );
 
