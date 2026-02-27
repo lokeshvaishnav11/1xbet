@@ -241,6 +241,132 @@ const addManualUPIPaymentRequest = async (req, res) => {
     }
 }
 
+
+const addManualUPIPaymentRequesttwo = async (req, res) => {
+  try {
+    const data = req.body;
+    let auth = req.cookies.auth;
+    let moneyp = parseFloat(data.money);
+    const minimumMoneyAllowed = parseFloat(process.env.MINIMUM_MONEY);
+
+    if (!moneyp || moneyp < minimumMoneyAllowed) {
+      return res.status(400).json({
+        message: `Money is Required and it should be ₹${minimumMoneyAllowed} or above!`,
+        status: false,
+      });
+    }
+
+    const user = await getUserDataByAuthToken(auth);
+
+    // Remove old pending recharge
+    const pendingRechargeList =
+      await rechargeTable.getRecordByPhoneAndStatus({
+        phone: user.phone,
+        status: PaymentStatusMap.PENDING,
+        type: PaymentMethodsMap.UPI_GATEWAY,
+      });
+
+    if (pendingRechargeList.length !== 0) {
+      await Promise.all(
+        pendingRechargeList.map((r) => rechargeTable.cancelById(r.id))
+      );
+    }
+
+    const orderId = getRechargeOrderId();
+
+    // ==============================
+    // WATCHPAYS HARDCODE CONFIG
+    // ==============================
+    const merchant_id = "100555024";
+    const api_key = "3fabaa49e82e82852f579f77b88c85b5";
+
+    const amount = Number(moneyp).toFixed(2);
+    const callback_url = "https://1xbet99.vip/watchpays-callback";
+
+    // ==============================
+    // SIGNATURE GENERATION
+    // ==============================
+
+    const signParams = {
+      amount,
+      callback_url,
+      merchant_id,
+      merchant_order_no: orderId,
+    };
+
+    const sortedKeys = Object.keys(signParams).sort();
+
+    const signString =
+      sortedKeys.map((key) => `${key}=${signParams[key]}`).join("&") +
+      `&key=${api_key}`;
+
+    const signature = crypto
+      .createHash("md5")
+      .update(signString)
+      .digest("hex");
+
+    // ==============================
+    // REQUEST BODY
+    // ==============================
+
+    const payload = {
+      merchant_id,
+      api_key,
+      amount,
+      merchant_order_no: orderId,
+      callback_url,
+      extra: user.username,
+      signature,
+    };
+
+    const response = await axios.post(
+      "https://api.watchpays.com/v1/create",
+      payload,
+      { headers: { "Content-Type": "application/json" } }
+    );
+
+    const wpRes = response.data;
+
+    console.log(wpRes,"wpRes")
+
+    if (wpRes.success) {
+      const newRecharge = {
+                orderId: orderId,
+                transactionId: 'NULL',
+                utr: "23456",
+                phone: user.phone,
+                money: moneyp,
+                type: PaymentMethodsMap.UPI_MANUAL,
+                status: 0,
+                today: rechargeTable.getCurrentTimeForTodayField(),
+                url: "NULL",
+                time: timeNow,
+            }
+
+      const recharge = await rechargeTable.create(newRecharge);
+
+      return res.status(200).json({
+        message: "Payment link generated successfully!",
+        url: wpRes.payment_url,
+        recharge,
+        status: true,
+      });
+    } else {
+      return res.status(400).json({
+        message: wpRes.message || "Payment gateway error",
+        status: false,
+      });
+    }
+  } catch (error) {
+    console.log("WatchPays Error:", error?.response?.data || error.message);
+
+    return res.status(500).json({
+      status: false,
+      message: "Something went wrong!",
+    });
+  }
+};
+
 // BondPay Constants
 const BONDPAY_URL = "https://api.bond-pays.com/v1/create";
 const BONDPAY_MERCHANT_ID = "100888009";
@@ -1185,6 +1311,73 @@ const bondPayCallback = async (req, res) => {
 };
 
 
+const watchPaysCallback = async (req, res) => {
+  try {
+    const { orderNo, merchantOrder, status, amount } = req.body;
+
+    console.log("WatchPays Callback Received:", req.body);
+
+    // 1. Validate required fields
+    if (!orderNo || !merchantOrder || !status || !amount) {
+      return res.status(400).send("invalid_request");
+    }
+
+    // 2. Fetch the recharge order from DB
+    const [rows] = await connection.execute(
+      "SELECT * FROM recharge WHERE orderId = ?",
+      [merchantOrder]
+    );
+
+    if (rows.length === 0) {
+      console.log("No recharge order found for merchantOrder:", merchantOrder);
+      return res.status(404).send("order_not_found");
+    }
+
+    const recharge = rows[0];
+
+    // 3. Avoid duplicate processing
+    // if (recharge.status === 1) {
+    //   console.log("Recharge already marked successful:", merchantOrder);
+    //   return res.send("success"); // idempotent response
+    // }
+
+    // 4. Match amount exactly
+    // if (parseFloat(recharge.money).toFixed(2) !== parseFloat(amount).toFixed(2)) {
+    //   console.log(
+    //     "Amount mismatch:",
+    //     "DB:", recharge.money,
+    //     "Callback:", amount
+    //   );
+    //   return res.status(400).send("amount_mismatch");
+    // }
+
+    // 5. Update recharge record as successful
+    // await connection.execute(
+    //   "UPDATE recharge SET status = 1, transactionId = ?, updatedAt = NOW() WHERE orderId = ?",
+    //   [orderNo, merchantOrder]
+    // );
+
+    // 6. Credit wallet (optional: your internal API)
+     try {
+        const resdata = await axios.post("https://1xbet99.vip/api/webapi/admin/rechargeDuyet", {
+          id: recharge.id,
+          type: "confirm"
+        });
+        console.log("Internal API response:", resdata.data);
+      } catch (err) {
+        console.error("Internal API error:", err.message);
+      }
+
+    console.log("Recharge updated successfully:", merchantOrder);
+    return res.send("success");
+
+  } catch (err) {
+    console.error("WatchPays Callback Error:", err);
+    return res.status(500).send("fail");
+  }
+};
+
+
 module.exports = {
     initiateUPIPayment,
     verifyUPIPayment,
@@ -1196,6 +1389,8 @@ module.exports = {
     initiateManualUSDTPayment,
     callbackfromgateway,
     addBondPayPaymentRequest,
-    bondPayCallback
+    bondPayCallback,
+    addManualUPIPaymentRequesttwo,
+    watchPaysCallback 
 
 }
