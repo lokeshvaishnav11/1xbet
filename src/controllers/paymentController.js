@@ -1335,6 +1335,8 @@ const watchPaysCallback = async (req, res) => {
 
     const recharge = rows[0];
 
+    console.log(recharge,"recharge is here")
+
     // 3. Avoid duplicate processing
     // if (recharge.status === 1) {
     //   console.log("Recharge already marked successful:", merchantOrder);
